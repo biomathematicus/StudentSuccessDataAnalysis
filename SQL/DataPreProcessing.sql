@@ -1,0 +1,38 @@
+delete from oir where ct_subject = '015X'
+delete from oir where ct_subject = '06X'
+
+/*
+update OIR set [CURRENTTERM] = '2014.3' where [CURRENTTERM] = 'Fall 2014'
+update OIR set [CURRENTTERM] = '2015.1' where [CURRENTTERM] = 'Spring 2015'
+update OIR set [CURRENTTERM] = '2015.2' where [CURRENTTERM] = 'Summer 2015'
+update OIR set [CURRENTTERM] = '2015.3' where [CURRENTTERM] = 'Fall 2015'
+update OIR set [CURRENTTERM] = '2016.1' where [CURRENTTERM] = 'Spring 2016'
+update OIR set [CURRENTTERM] = '2016.2' where [CURRENTTERM] = 'Summer 2016'
+update OIR set [CURRENTTERM] = '2016.3' where [CURRENTTERM] = 'Fall 2016'
+update OIR set [CURRENTTERM] = '2017.1' where [CURRENTTERM] = 'Spring 2017'
+update OIR set [CURRENTTERM] = '2017.2' where [CURRENTTERM] = 'Summer 2017'
+update OIR set [CURRENTTERM] = '2017.3' where [CURRENTTERM] = 'Fall 2017'
+update OIR set [CURRENTTERM] = '2018.1' where [CURRENTTERM] = 'Spring 2018'
+update OIR set [CURRENTTERM] = '2018.2' where [CURRENTTERM] = 'Summer 2018'
+update OIR set [CURRENTTERM] = '2018.3' where [CURRENTTERM] = 'Fall 2018'
+update OIR set [CURRENTTERM] = '2019.1' where [CURRENTTERM] = 'Spring 2019'
+update OIR set [CURRENTTERM] = '2019.2' where [CURRENTTERM] = 'Summer 2019'
+
+
+
+update OIR set [CURRENTTERM] = '2014.66' where [CURRENTTERM] = '2014.3'
+update OIR set [CURRENTTERM] = '2015.0' where [CURRENTTERM] = '2015.1'
+update OIR set [CURRENTTERM] = '2015.33' where [CURRENTTERM] = '2015.2'
+update OIR set [CURRENTTERM] = '2015.66' where [CURRENTTERM] = '2015.3'
+update OIR set [CURRENTTERM] = '2016.0' where [CURRENTTERM] = '2016.'
+update OIR set [CURRENTTERM] = '2016.33' where [CURRENTTERM] = '2016.2'
+update OIR set [CURRENTTERM] = '2016.66' where [CURRENTTERM] = '2016.3'
+update OIR set [CURRENTTERM] = '2017.0' where [CURRENTTERM] = '2017.1'
+update OIR set [CURRENTTERM] = '2017.33' where [CURRENTTERM] = '2017.2'
+update OIR set [CURRENTTERM] = '2017.66' where [CURRENTTERM] = '2017.3'
+update OIR set [CURRENTTERM] = '2018.0' where [CURRENTTERM] = '2018.1'
+update OIR set [CURRENTTERM] = '2018.33' where [CURRENTTERM] = '2018.2'
+update OIR set [CURRENTTERM] = '2018.66' where [CURRENTTERM] = '2018.3'
+update OIR set [CURRENTTERM] = '2019.0' where [CURRENTTERM] = '2019.1'
+update OIR set [CURRENTTERM] = '2019.33' where [CURRENTTERM] = '2019.2'
+*/

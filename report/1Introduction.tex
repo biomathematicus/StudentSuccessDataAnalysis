@@ -1,0 +1,793 @@
+﻿%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Introduction}  \newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%================================================================
+\section{A Word from the Chair of Mathematics}
+%================================================================
+
+\vspace{0.5in}
+%The University of Texas at San Antonio (UTSA) is unique in its diversity and how it reflects the society it serves. This is what attracted me to UTSA, for my professional mission is to have the face of success match the face of the nation. 
+
+One of the most important questions for all fields of study at a university is: \textit{What are the factors that influence academic success?} Data supports the intuitive notion that a large set of events takes place to influence a student's success or failure. However, there is no quantitative method that can predict univocally these outcomes for any individual; instead, we can look for patterns in the population. When the number of students is sufficiently large, any individual variation becomes negligible thus allowing trends, shaped by large forces, to emerge as a phenomenon.
+
+The analysis of a decade of data at UTSA reveals that poor performance in mathematics is strongly correlated with academic failure across disciplines. Departments of mathematics are the largest at most universities by number of students and credit hours served, and that is why they have the lion's share in student success. Mathematics is not only for scientists and engineers; it is also part of the core curriculum all students need to complete. Thus, since mathematics is everywhere, it should be for everyone; however, mathematics is in many cases the major obstacle . The root cause of this phenomenon might start in K-12; nevertheless, universities needs to serve all students, irrespective of their previous preparation in mathematics. Improvements in undergraduate mathematics education could be the optimal contributors for improving student success.  
+
+%But, irrespective of how many students take mathematics classes, one of the best predictors of success across domains is numeracy coupled with confidence.  This is correlation is particularly strong in Science, Technology, Engineering, and Mathematics (STEM), since mathematics is the alphabet with which the vocabulary of all sciences is built.   
+% 
+%Improvement in mathematics education at the undergraduate level has an impact in all education and research at a university. 
+Our society pays a tragic human cost when students drop out from college studies and never finish their degrees, or end up in different destination majors that do not match their passion and greatest contribution potential. In many cases, mathematics is the greatest obstacle.  The Department of Mathematics is actively moving toward excellence in teaching using innovative pedagogical approaches such as adaptive learning, stratified course coordination, student data analytics, personalized interventions for students at risk, and machine learning to optimize the use of instructional resources. 
+
+The Department of Mathematics will work with all academic units across campus to refine curricula that match the needs of different disciplines. Please contact \href{mailto:math.chair@utsa.edu}{math.chair@utsa.edu} if your academic unit needs curricular changes in mathematics. 
+
+%Currently, UTSA is undergoing a profound and positive transformation. The most evident change is the expected designation as an R1 institution by 2021.  The growth the university is experiencing in all aspects (diversity, achievement, number of students and faculty, financials, endowment, research, academic quality, etc.) supports the idea that The University of Texas at San Antonio is the university of the future.
+
+%The Department of Mathematics at UTSA has 21 tenured or tenure-track faculty, and 30 instructors. The Department currently has experts in the areas of pure mathematics, applied mathematics, and mathematics education. It offers three Bachelor of Science degrees: the B.S. degree in General Mathematics Studies, the B.S. degree in Mathematics, and the B.S. degree in Mathematics of Data and Computing offered as a joint degree with the Department of Computer Science. The Department also offers three Master of Science degrees: M.S. in Applied Mathematics-Industrial Mathematics, M.S. in Mathematics, and M.S. in Mathematics Education. The Department is engaged in the creation of a Ph.D. program.
+
+%Access to and achievement in STEM fields (Science, Technology, Engineering and Mathematics) is not evenly distributed among all members of the US society. The National Science Foundation keeps reliable annual statistics in this subject (\url{http://www.nsf.gov/statistics/wmpd/}). We are building a department that facilitates even access to the opportunities that come with a higher education, and we are doing it through education and research in mathematics. The Department of Mathematics is working to provide a template to the nation for closing achievement gaps.
+
+%In terms of research, our department is growing its connections to many other academic units. We recognize the importance of (i) pure mathematics as the foundation for mathematical research, (ii) applied mathematics as a highway for interfacing with other academic units, and (iii) mathematics education as the driver to understand instruction and learning. The Department will maintain a balanced research portfolio in these areas.
+
+\vspace{0.5in}
+\noindent Juan B. Guti\'errez, Ph.D. \\
+Professor and Chair of Mathematics \\
+University of Texas at San Antonio \\
+\href{mailto:juan.gutierrez3@utsa.edu}{juan.gutierrez3@utsa.edu} \\
+\today
+
+
+%================================================================
+\section{Analysis Methods}
+%================================================================
+\subsection{Definitions}
+%================================================================
+\begin{itemize}
+	\item \textbf{Grading}: Evaluation of an individual's performance as a proxy for learning. Note that e.g. attendance does not necessarily mean learning. 
+	\item \textbf{Assessment}: Systematic examination of student outcomes to improve educational practices.
+	\item \textbf{Stratified Course}: Split of a course in sections that target particular groups of students. 
+	\item \textbf{Course coordination}: Implementation of best practices that guarantee consistency of instruction across instructors and classrooms.
+\end{itemize}
+
+%================================================================
+\subsection{Data Source}
+%================================================================
+The data used int his analysis was obtained from he UTSA Office of Institutional research, under Data Request \#201910053-IN (October, 2019). The raw data is a flat file with 75 fields and 1,866,884 records. 
+
+%================================================================
+\subsection{Odds Ratio}\label{OR}
+%================================================================
+A tool used recurrently in the analyses that follow is the odds ratio; it was selected because in practice it has fractal-like properties, that is, it show consistent results when applied to instructors, classes, departments, and colleges. An odds ratio (OR) is a measure of association between an exposure (e.g. department) and an outcome (e.g. not reaching 4000-level courses in five years). The OR represents the odds that an outcome will occur given a particular exposure, compared to the odds of the outcome occurring in the absence of that exposure. The odds ratio is defined as 
+\[
+	OR = \frac{a/c}{b/d},
+\]
+where 
+\begin{itemize}
+	\item a = Number of exposed cases (e.g. took classes in department and do not have 4000-level courses within five years), 
+	\item b = Number of exposed non-cases (e.g. took classes in department and have 4000-level courses within five years), 
+	\item c = Number of unexposed cases (e.g. did not take classes in department and do not have 4000-level courses within five years), 
+	\item d = Number of unexposed non-cases (e.g. did not take classes in department and have 4000-level courses within five years). 
+\end{itemize}
+The p-value computed with Fisher's exact test to determine if there are nonrandom associations between two categorical variables. 
+
+
+%================================================================
+\chapter{Analysis for UTSA}  \newpage
+%================================================================
+\section{General Statistics}
+%================================================================
+
+\vspace{\fill}
+The number of students at UTSA keeps increasing every year, as shown in Figure \ref{fig:../figure/aUTSAStat-ALL-ALL-2013-66-2018-66-A}. 
+\begin{figure}[ht]
+  \centering 
+    \includegraphics[width=0.90\textwidth]{../figure/aUTSAStat-ALL-ALL-2013-66-2018-66-A.pdf}
+    \caption{aUTSAStat-ALL-ALL-2013-66-2018-66-A}
+    \label{fig:../figure/aUTSAStat-ALL-ALL-2013-66-2018-66-A}
+\end{figure}
+
+%----------------------------------------------------------------
+\vspace{\fill}
+The number of graduated students lags substantially with respect to admitted students, as shown in Figure \ref{fig:../figure/aUTSAStat-ALL-ALL-2013-66-2018-66-E}.
+\begin{figure}[ht]
+  \centering 
+    \includegraphics[width=0.90\textwidth]{../figure/aUTSAStat-ALL-ALL-2013-66-2018-66-E.pdf}
+    \caption{aUTSAStat-ALL-ALL-2013-66-2018-66-E}
+    \label{fig:../figure/aUTSAStat-ALL-ALL-2013-66-2018-66-E}
+\end{figure}
+
+%----------------------------------------------------------------
+%----------------------------------------------------------------
+\newpage
+\vspace{\fill}
+The proportion of first-generation students has remained more or less constant at UTSA, as shown in Figure \ref{fig:../figure/aUTSAStat-ALL-ALL-2013-66-2018-66-B}.
+\begin{figure}[ht]
+  \centering 
+    \includegraphics[width=0.90\textwidth]{../figure/aUTSAStat-ALL-ALL-2013-66-2018-66-B.pdf}
+    \caption{aUTSAStat-ALL-ALL-2013-66-2018-66-B}
+    \label{fig:../figure/aUTSAStat-ALL-ALL-2013-66-2018-66-B}
+\end{figure}
+
+%----------------------------------------------------------------
+\vspace{\fill}
+The ratio female/male has had a small increase, but now it is approximately 1, that is, there is male/female parity,a s shown in Figure \ref{fig:../figure/aUTSAStat-ALL-ALL-2013-66-2018-66-C}.
+\begin{figure}[ht]
+  \centering 
+    \includegraphics[width=0.90\textwidth]{../figure/aUTSAStat-ALL-ALL-2013-66-2018-66-C.pdf}
+    \caption{aUTSAStat-ALL-ALL-2013-66-2018-66-C}
+    \label{fig:../figure/aUTSAStat-ALL-ALL-2013-66-2018-66-C}
+\end{figure}
+
+%----------------------------------------------------------------
+%----------------------------------------------------------------
+\newpage
+\vspace{\fill}
+The proportion of students who are recipients of financial aid has remained more or less constant at UTSA, as shown in Figure \ref{fig:../figure/aUTSAStat-ALL-ALL-2013-66-2018-66-D}.
+\begin{figure}[ht]
+  \centering 
+    \includegraphics[width=0.90\textwidth]{../figure/aUTSAStat-ALL-ALL-2013-66-2018-66-D.pdf}
+    \caption{aUTSAStat-ALL-ALL-2013-66-2018-66-D}
+    \label{fig:../figure/aUTSAStat-ALL-ALL-2013-66-2018-66-D}
+\end{figure}
+
+%----------------------------------------------------------------
+\vspace{\fill}
+The comparison of admission vs. graduation data disaggregated by ethnicity shows a small but measurable bias in graduation rates, with white students having an increase as a percentage of the student population who graduate with respect to the student population that is admitted, as shown in Figure \ref{fig:../figure/aUTSAStat-ALL-ALL-2013-66-2018-66-F}.
+\begin{figure}[ht]
+  \centering 
+    \includegraphics[width=0.90\textwidth]{../figure/aUTSAStat-ALL-ALL-2013-66-2018-66-F.pdf}
+    \caption{aUTSAStat-ALL-ALL-2013-66-2018-66-F}
+    \label{fig:../figure/aUTSAStat-ALL-ALL-2013-66-2018-66-F}
+\end{figure}
+
+%================================================================
+\newpage
+\section{On Mathematics \& Student Success}
+%================================================================
+\vspace{2in}
+The graduation rate by ethnicity shows that international students graduate at the highest rate, followed by white, and Hispanic students. 
+\begin{figure}[ht]
+  \centering 
+    \includegraphics[width=\textwidth]{../figure/aUTSAStat-ALL-ALL-2013-66-2018-66-G.pdf}
+    \caption{aUTSAStat-ALL-ALL-2013-66-2018-66-G}
+    \label{fig:../figure/aUTSAStat-ALL-ALL-2013-66-2018-66-G}
+\end{figure}
+
+%----------------------------------------------------------------
+\newpage
+\vspace{\fill}
+Most transfer students have completed their mathematics requirements.  
+\begin{figure}[ht]
+  \centering 
+    \includegraphics[width=\textwidth]{../figure/figUTSAMathTotal.pdf}
+    \caption{figUTSAMathTotal}
+    \label{fig:../figure/figUTSAMathTotal}
+\end{figure}
+
+%----------------------------------------------------------------
+%----------------------------------------------------------------
+\newpage
+\vspace{\fill}
+The distribution of students and credit hours by subject matter for all students during the entire period studied shows that the Department of Mathematics serves the largest number of students. 
+\begin{figure}[ht]
+  \centering 
+    \includegraphics[width=\textwidth]{../figure/All-students--all-course-levels.pdf}
+    \caption{All students, all course levels}
+    \label{fig:../figure/All-students--all-course-levels}
+\end{figure}
+
+%----------------------------------------------------------------
+\newpage
+\vspace{\fill}
+This is particularly high for 1st-year students, since 15\% of credit hours are given by the Department of Mathematics.  
+\begin{figure}[ht]
+  \centering 
+    \includegraphics[width=\textwidth]{../figure/All-students--first-year-courses.pdf}
+    \caption{All students, first-year courses}
+    \label{fig:../figure/All-students--first-year-courses}
+\end{figure}
+
+%----------------------------------------------------------------
+%----------------------------------------------------------------
+\newpage
+\vspace{\fill}
+Surprisingly, 25\% of all DFW for first-year students comes from the Department of Mathematics. 
+\begin{figure}[ht]
+  \centering 
+    \includegraphics[width=\textwidth]{../figure/All-students--DFW-in-first-year.pdf}
+    \caption{All students, DFW in first year}
+    \label{fig:../figure/All-students--DFW-in-first-year}
+\end{figure}
+
+%----------------------------------------------------------------
+\newpage
+\vspace{\fill}
+Whereas the distribution of ABC grades in the first year more or less corresponds to the population of students served by each subject.  
+\begin{figure}[ht]
+  \centering 
+    \includegraphics[width=0.90\textwidth]{../figure/All-students--ABC-in-first-year.pdf}
+    \caption{All students, ABC in first year}
+    \label{fig:../figure/All-students--ABC-in-first-year}
+\end{figure}
+
+%----------------------------------------------------------------
+%---------------------------------------------------------------- 
+\iffalse{}
+  \newpage
+  \vspace{\fill}
+  The proportion of students  with ABC (noted $X_p$) or DFW (noted $X_f$) in first year who reach 4000-level courses within five years follows approximately the population of students served by each subject.  
+  \begin{figure}[ht]
+    \centering 
+      \includegraphics[width=0.90\textwidth]{../figure/All-students-with-ABC-(noted-$X_p$)-or-DFW-(noted-$X_f$)-in-first-year-who-reach-4000-.pdf}
+      \caption{All students with ABC (noted $X_p$) or DFW (noted $X_f$) in first year who reach 4000 }
+      \label{fig:../figure/All-students-with-ABC-(noted-$X_p$)-or-DFW-(noted-$X_f$)-in-first-year-who-reach-4000-}
+  \end{figure}
+
+  %----------------------------------------------------------------
+  \vspace{\fill}
+  However, the proportion of students  with ABC (noted $X_p$) or DFW (noted $X_f$) in first year who \textbf{DO NOT} reach 4000-level courses within five years shows that a failure in mathematics is a good predictor (quantified in the next sections) of academic failure. In other words, the only $X_f$ on the left-hand side of the pie chart is MAT.   
+  \begin{figure}[ht]
+    \centering 
+      \includegraphics[width=0.90\textwidth]{../figure/All-students-with-ABC-(noted-$X_p$)-or-DFW-(noted-$X_f$)-in-first-year-who-DO-NOT-reach-4000-.pdf}
+      \caption{All students with ABC (noted $X_p$) or DFW (noted $X_f$) in first year who DO NOT reach 4000 }
+      \label{fig:../figure/All-students-with-ABC-(noted-$X_p$)-or-DFW-(noted-$X_f$)-in-first-year-who-DO-NOT-reach-4000-}
+  \end{figure}
+\fi
+
+%================================================================
+\newpage
+\section{Classroom Size Influence on Student Performance}
+%================================================================
+
+\vspace{\fill}
+\begin{figure}[ht]
+  \centering 
+    \includegraphics[width=\textwidth]{../figure/figClassSizeUTSA.pdf}
+    \caption{figClassSizeUTSA}
+    \label{fig:../figure/figClassSizeUTSA}
+\end{figure}
+
+\newpage
+
+\vspace{\fill}
+\begin{figure}[ht]
+  \centering 
+    \includegraphics[width=\textwidth]{../figure/figClassSizeCOSCOE.pdf}
+    \caption{figClassSizeCOSCOE}
+    \label{fig:../figure/figClassSizeCOSCOE}
+\end{figure}
+
+
+%================================================================
+\newpage
+\section{Odds Ratio Sorted by Students Served. Fall 2013 -- Summer 2019}
+%================================================================
+
+If the column $H_0 = 1$, then the null hypothesis is rejected, i.e. there is a true effect; however, 
+
+The columns in the table below are defined as follows: 
+\begin{itemize}
+	\item \textbf{OR}: Odds ratio. $OR > 1$ is bad for students, and an $OR < 1$ is beneficial. 
+	\item \textbf{$H_0$}: Rejection of null hypothesis. If the column $H_0 = 1$, then the null hypothesis is rejected, i.e. there is a true effect.
+	\item \textbf{p}: $p$-value. It has not been corrected for multiple hypothesis (e.g. Benjamini-Hochberg, Bonferroni, etc.), and should be used only as a comparative indicator. 
+	\item a, b, c, d: As defined in Section \ref{OR}. 
+	\item \textbf{\% no-4000}: Percentage of all students who took the subject and did not reach 4000-level courses within 5 years of starting their studies. 
+	\item \textbf{\% Students}: Percentage of all students who took the subject. 
+\end{itemize}
+
+{\scriptsize \ttfamily \begin{longtable}{llllllllll}\label{table:OR}
+ \centering 
+ \textbf{Subject} & \textbf{OR} & \textbf{$H_0$} & \textbf{p} & \textbf{a} & \textbf{b} & \textbf{c} & \textbf{d} & \% no-4000 & \% Students \\ 
+\hline 
+\color{red}MAT & 1.543 & 1 & \color{red}8.8118e-205 & 20752 & 12327 & 27986 & 25651 & 0.23931 & \color{red}0.38146 \\ 
+\color{red}POL & 1.1679 & 1 & 1.5508e-26 & 16536 & 12969 & 28005 & 25651 & 0.19884 & 0.35479 \\ 
+\color{red}AIS & 1.998 & 1 & \color{red}1.334e-322 & 16454 & 7537 & 28027 & 25651 & 0.21185 & \color{red}0.30889 \\ 
+\color{red}HIS & 1.2816 & 1 & 3.7091e-56 & 13829 & 9879 & 28017 & 25651 & 0.17872 & 0.3064 \\ 
+\color{red}WRC & 1.9628 & 1 & \color{red}1.5316e-322 & 13645 & 6363 & 28025 & 25651 & 0.18518 & \color{red}0.27154 \\ 
+BIO & 0.86189 & 1 & 1.1313e-18 & 9275 & 9849 & 28027 & 25651 & 0.1274 & 0.26269 \\ 
+SOC & 0.64925 & 1 & 6.5175e-136 & 7380 & 10408 & 28011 & 25648 & 0.10329 & 0.24897 \\ 
+CHE & 1.0971 & 1 & 2.1629e-07 & 9014 & 7521 & 28023 & 25651 & 0.12839 & 0.23551 \\ 
+PSY & 1.0222 & 0 & 0.23158 & 8170 & 7314 & 28030 & 25651 & 0.11812 & 0.22387 \\ 
+ECO & 0.86612 & 1 & 2.4482e-14 & 6938 & 7330 & 28032 & 25651 & 0.1021 & 0.20997 \\ 
+IS & 0.76093 & 1 & 3.9277e-47 & 6416 & 7725 & 27998 & 25651 & 0.094645 & 0.2086 \\ 
+MGT & 0.30413 & 1 & 1.4822e-322 & 3289 & 9896 & 28032 & 25651 & 0.049186 & 0.19718 \\ 
+STA & 0.64668 & 1 & 2.6475e-92 & 4390 & 6213 & 28027 & 25651 & 0.068294 & 0.16495 \\ 
+PHY & 0.61257 & 1 & 1.7962e-115 & 4241 & 6338 & 28020 & 25651 & 0.066008 & 0.16465 \\ 
+MKT & 0.38379 & 1 & 8.8932e-323 & 3029 & 7222 & 28032 & 25651 & 0.047377 & 0.16034 \\ 
+COM & 0.49614 & 1 & 2.1825e-217 & 3498 & 6452 & 28030 & 25651 & 0.054973 & 0.15637 \\ 
+ACC & 0.63349 & 1 & 1.3457e-93 & 3962 & 5723 & 28032 & 25651 & 0.062524 & 0.15284 \\ 
+GBA & 0.50822 & 1 & 2.645e-196 & 3404 & 6129 & 28032 & 25651 & 0.053847 & 0.1508 \\ 
+MS & 0.4834 & 1 & 3.2953e-216 & 3151 & 5966 & 28026 & 25651 & 0.05018 & 0.14519 \\ 
+GEO & 0.82093 & 1 & 9.7142e-18 & 4173 & 4652 & 28029 & 25651 & 0.066763 & 0.14119 \\ 
+ANT & 0.81146 & 1 & 2.3186e-19 & 4056 & 4574 & 28030 & 25650 & 0.065094 & 0.1385 \\ 
+SPN & 0.59841 & 1 & 1.4621e-104 & 3337 & 5103 & 28031 & 25651 & 0.053717 & 0.13586 \\ 
+FIN & 0.17737 & 1 & 1.1364e-322 & 1321 & 6815 & 28032 & 25651 & 0.021369 & 0.13161 \\ 
+CS & 0.79414 & 1 & 2.4003e-21 & 3613 & 4166 & 28004 & 25643 & 0.058819 & 0.12664 \\ 
+MUS & 0.67818 & 1 & 1.7062e-56 & 3267 & 4409 & 28023 & 25648 & 0.053254 & 0.12512 \\ 
+ENG & 0.41148 & 1 & 4.3896e-270 & 2377 & 5286 & 28032 & 25651 & 0.038747 & 0.12491 \\ 
+BLW & 0.13866 & 1 & 9.8813e-323 & 923 & 6091 & 28032 & 25651 & 0.015207 & 0.11556 \\ 
+ART & 0.53687 & 1 & 5.9847e-126 & 2535 & 4321 & 28028 & 25649 & 0.041878 & 0.11326 \\ 
+KIN & 0.43669 & 1 & 4.3323e-198 & 2012 & 4216 & 28032 & 25651 & 0.033583 & 0.10395 \\ 
+HTH & 0.19181 & 1 & 1.1858e-322 & 1047 & 4995 & 28032 & 25651 & 0.01753 & 0.10116 \\ 
+ES & 1.2223 & 1 & 1.7847e-11 & 2849 & 2133 & 28031 & 25651 & 0.048565 & 0.084924 \\ 
+AHC & 0.87085 & 1 & 4.5286e-06 & 2339 & 2458 & 28029 & 25651 & 0.039999 & 0.082032 \\ 
+GRG & 0.38048 & 1 & 4.5597e-200 & 1355 & 3259 & 28030 & 25651 & 0.023244 & 0.079149 \\ 
+AST & 0.80202 & 1 & 1.6068e-12 & 2086 & 2380 & 28032 & 25651 & 0.035873 & 0.076803 \\ 
+EGR & 0.61423 & 1 & 1.4462e-49 & 1621 & 2415 & 28031 & 25651 & 0.028085 & 0.069926 \\ 
+CRJ & 0.41283 & 1 & 1.7248e-146 & 1215 & 2693 & 28029 & 25647 & 0.0211 & 0.067866 \\ 
+GES & 1.3861 & 1 & 1.8141e-21 & 2245 & 1483 & 28015 & 25651 & 0.039116 & 0.064955 \\ 
+IDS & 0.3605 & 1 & 2.1833e-173 & 1005 & 2551 & 28032 & 25651 & 0.017558 & 0.062125 \\ 
+CLA & 0.58825 & 1 & 2.2914e-51 & 1377 & 2142 & 28032 & 25651 & 0.024073 & 0.061519 \\ 
+PHI & 0.69743 & 1 & 5.8656e-21 & 1253 & 1644 & 28032 & 25651 & 0.022146 & 0.051202 \\ 
+EE & 0.54895 & 1 & 2.1249e-52 & 1048 & 1747 & 28031 & 25651 & 0.018556 & 0.049489 \\ 
+WS & 0.54556 & 1 & 5.2511e-50 & 973 & 1632 & 28032 & 25651 & 0.017286 & 0.04628 \\ 
+ME & 0.64087 & 1 & 7.7013e-28 & 1061 & 1515 & 28031 & 25651 & 0.01886 & 0.045789 \\ 
+BBL & 0.31073 & 1 & 2.1102e-162 & 653 & 1923 & 28032 & 25651 & 0.011607 & 0.045788 \\ 
+SPE & 0.2175 & 1 & 7.7085e-243 & 478 & 2011 & 28032 & 25651 & 0.0085096 & 0.04431 \\ 
+HUM & 0.31575 & 1 & 1.3617e-146 & 608 & 1762 & 28032 & 25651 & 0.010847 & 0.042281 \\ 
+EDU & 0.36129 & 1 & 2.1724e-100 & 565 & 1431 & 28032 & 25651 & 0.010147 & 0.035848 \\ 
+RDG & 0.082926 & 1 & 4.4466e-323 & 144 & 1589 & 28032 & 25651 & 0.0025985 & 0.031273 \\ 
+EDP & 0.16829 & 1 & 3.484e-211 & 263 & 1430 & 28032 & 25651 & 0.0047493 & 0.030573 \\ 
+HON & 0.47096 & 1 & 9.0216e-49 & 561 & 1090 & 28032 & 25651 & 0.010138 & 0.029837 \\ 
+QLE & 0.010234 & 1 & 3.4585e-323 & 17 & 1520 & 28032 & 25651 & 0.00030786 & 0.027834 \\ 
+ESL & 0.11803 & 1 & 7.7225e-232 & 166 & 1287 & 28032 & 25651 & 0.0030107 & 0.026353 \\ 
+ECE & 0.1582 & 1 & 3.0097e-190 & 213 & 1232 & 28032 & 25651 & 0.0038637 & 0.026212 \\ 
+ARC & 0.67537 & 1 & 1.2894e-12 & 575 & 779 & 28018 & 25636 & 0.010453 & 0.024615 \\ 
+CSH & 0.52241 & 1 & 1.7413e-29 & 467 & 818 & 28032 & 25651 & 0.0084959 & 0.023377 \\ 
+CE & 0.67317 & 1 & 1.5217e-11 & 512 & 696 & 28031 & 25651 & 0.0093277 & 0.022008 \\ 
+AAS & 0.52031 & 1 & 7.3851e-28 & 431 & 758 & 28032 & 25651 & 0.0078546 & 0.021669 \\ 
+DAN & 0.47508 & 1 & 3.9329e-35 & 406 & 782 & 28032 & 25651 & 0.0073992 & 0.021651 \\ 
+GLA & 0.5194 & 1 & 9.5826e-28 & 428 & 754 & 28031 & 25649 & 0.0078014 & 0.021545 \\ 
+MAS & 0.57014 & 1 & 1.2289e-20 & 443 & 711 & 28032 & 25651 & 0.0080785 & 0.021044 \\ 
+LTED & 0.19956 & 1 & 3.6617e-125 & 205 & 940 & 28032 & 25651 & 0.003739 & 0.020883 \\ 
+PAD & 0.35475 & 1 & 6.0895e-60 & 314 & 810 & 28030 & 25651 & 0.0057294 & 0.020509 \\ 
+MHU & 0.49072 & 1 & 9.4437e-30 & 377 & 703 & 28032 & 25651 & 0.0068842 & 0.019721 \\ 
+MDS & 0.078555 & 1 & 3.5095e-184 & 74 & 862 & 28032 & 25651 & 0.0013548 & 0.017137 \\ 
+FRN & 0.5764 & 1 & 1.597e-15 & 337 & 535 & 28032 & 25651 & 0.0061773 & 0.015984 \\ 
+COU & 0.11551 & 1 & 1.0069e-131 & 90 & 713 & 28032 & 25651 & 0.0016518 & 0.014738 \\ 
+JPN & 0.65795 & 1 & 9.8714e-09 & 325 & 452 & 28032 & 25651 & 0.0059677 & 0.014267 \\ 
+CSM & 0.15572 & 1 & 3.3617e-98 & 105 & 617 & 28032 & 25651 & 0.00193 & 0.013271 \\ 
+NCB & 4.2992 & 1 & 7.4364e-59 & 545 & 116 & 28032 & 25651 & 0.010029 & 0.012163 \\ 
+AMS & 0.33257 & 1 & 1.1836e-37 & 165 & 454 & 28032 & 25651 & 0.0030386 & 0.011399 \\ 
+MOT & 0 & 1 & 4.0979e-194 & 0 & 608 & 28032 & 25651 & 0 & 0.011199 \\ 
+CSS & 1.3726 & 1 & 0.00021577 & 345 & 230 & 28031 & 25651 & 0.0063586 & 0.010598 \\ 
+SET & 0.061574 & 1 & 4.0916e-124 & 36 & 535 & 28032 & 25651 & 0.00066355 & 0.010525 \\ 
+NDT & 1.0734 & 0 & 0.42126 & 305 & 260 & 28032 & 25651 & 0.0056223 & 0.010415 \\ 
+LGS & 0.057755 & 1 & 1.1802e-119 & 32 & 507 & 28032 & 25651 & 0.00059017 & 0.0099406 \\ 
+ASC & 1.0429 & 0 & 0.64994 & 261 & 229 & 28032 & 25651 & 0.0048179 & 0.0090451 \\ 
+PAL & 0.32602 & 1 & 6.2324e-29 & 119 & 334 & 28032 & 25651 & 0.0021982 & 0.0083678 \\ 
+UCS & 0.34386 & 1 & 3.7003e-26 & 121 & 322 & 28032 & 25651 & 0.0022355 & 0.0081846 \\ 
+GER & 0.64655 & 1 & 6.5154e-06 & 183 & 259 & 28032 & 25651 & 0.0033811 & 0.0081663 \\ 
+RUS & 0.64951 & 1 & 8.9354e-06 & 181 & 255 & 28032 & 25651 & 0.0033445 & 0.0080563 \\ 
+MSC & 0.97171 & 0 & 0.77218 & 223 & 210 & 28032 & 25651 & 0.0041208 & 0.0080013 \\ 
+ENT & 0.047448 & 1 & 1.4557e-100 & 21 & 405 & 28032 & 25651 & 0.00038811 & 0.007873 \\ 
+BME & 0.61627 & 1 & 1.3612e-06 & 165 & 245 & 28032 & 25651 & 0.0030503 & 0.0075795 \\ 
+QLW & 0.052741 & 1 & 1.9025e-84 & 20 & 347 & 28032 & 25651 & 0.00037003 & 0.00679 \\ 
+CHN & 1.052 & 0 & 0.67158 & 192 & 167 & 28032 & 25651 & 0.0035528 & 0.006643 \\ 
+ITL & 0.6555 & 1 & 8.0638e-05 & 149 & 208 & 28032 & 25651 & 0.0027572 & 0.0066062 \\ 
+LNG & 0.25649 & 1 & 7.7269e-30 & 74 & 264 & 28032 & 25651 & 0.0013698 & 0.0062568 \\ 
+LAT & 0.73005 & 1 & 0.0047249 & 146 & 183 & 28032 & 25651 & 0.0027031 & 0.0060912 \\ 
+MES & 0.14154 & 1 & 8.7815e-48 & 43 & 278 & 28032 & 25651 & 0.00079624 & 0.005944 \\ 
+EDL & 0.017463 & 1 & 8.5287e-76 & 5 & 262 & 28032 & 25651 & 9.2678e-05 & 0.004949 \\ 
+GEM & 0.37038 & 1 & 4.3899e-13 & 68 & 168 & 28032 & 25651 & 0.0012612 & 0.0043769 \\ 
+FL & 0.13935 & 1 & 9.7548e-35 & 30 & 197 & 28032 & 25651 & 0.00055648 & 0.0042107 \\ 
+RFD & 0.057468 & 1 & 4.9962e-50 & 13 & 207 & 28032 & 25651 & 0.00024117 & 0.0040814 \\ 
+KOR & 0.51243 & 1 & 5.2568e-06 & 70 & 125 & 28032 & 25651 & 0.0012992 & 0.0036193 \\ 
+UTE & 2.8673 & 1 & 4.6162e-11 & 141 & 45 & 28031 & 25651 & 0.0026175 & 0.0034529 \\ 
+IDE & 0.22017 & 1 & 7.5434e-18 & 32 & 133 & 28032 & 25651 & 0.00059427 & 0.0030642 \\ 
+GRK & 1.1508 & 0 & 0.41234 & 83 & 66 & 28032 & 25651 & 0.0015418 & 0.0027679 \\ 
+CPE & 0.088295 & 1 & 6.6556e-25 & 11 & 114 & 28032 & 25651 & 0.00020443 & 0.0023231 \\ 
+MSM & 0.043163 & 1 & 7.6482e-28 & 5 & 106 & 28032 & 25651 & 9.2947e-05 & 0.0020634 \\ 
+THR & 0.23916 & 1 & 1.22e-11 & 23 & 88 & 28032 & 25651 & 0.00042756 & 0.0020634 \\ 
+NPO & 0.064701 & 1 & 8.7939e-24 & 7 & 99 & 28032 & 25651 & 0.00013014 & 0.0019707 \\ 
+EIS & 1.5829 & 1 & 0.027975 & 64 & 37 & 28031 & 25651 & 0.00119 & 0.0018779 \\ 
+CME & 1.5486 & 0 & 0.093049 & 44 & 26 & 28032 & 25651 & 0.00081856 & 0.0013023 \\ 
+ARA & 0.39217 & 1 & 0.00065983 & 18 & 42 & 28032 & 25651 & 0.00033493 & 0.0011164 \\ 
+FM & 0 & 1 & 1.13e-18 & 0 & 56 & 28032 & 25651 & 0 & 0.0010421 \\ 
+UPM & 45.7531 & 1 & 2.6265e-13 & 50 & 1 & 28032 & 25651 & 0.00093051 & 0.00094912 \\ 
+URP & 0 & 1 & 1.6917e-06 & 0 & 18 & 28032 & 25651 & 0 & 0.00033519 \\ 
+TSP & 0.091506 & 1 & 0.0046485 & 1 & 10 & 28032 & 25651 & 1.8624e-05 & 0.00020486 \\ 
+LAS & 0.10167 & 1 & 0.0089098 & 1 & 9 & 28032 & 25651 & 1.8624e-05 & 0.00018624 \\ 
+TIS & 0.61004 & 0 & 0.67492 & 2 & 3 & 28032 & 25651 & 3.7252e-05 & 9.3131e-05 \\ 
+KAH & 0 & 0 & 0.052138 & 0 & 4 & 28032 & 25651 & 0 & 7.4506e-05 \\ 
+AHS & NaN & 0 & 1 & 0 & 0 & 28032 & 25651 & 0 & 0 \\ 
+ASL & NaN & 0 & 1 & 0 & 0 & 28032 & 25651 & 0 & 0 \\ 
+CandI & NaN & 0 & 1 & 0 & 0 & 28032 & 25651 & 0 & 0 \\ 
+COA & NaN & 0 & 1 & 0 & 0 & 28032 & 25651 & 0 & 0 \\ 
+COR & NaN & 0 & 1 & 0 & 0 & 28032 & 25651 & 0 & 0 \\ 
+INS & NaN & 0 & 1 & 0 & 0 & 28032 & 25651 & 0 & 0 \\ 
+\hline 
+\end{longtable}} 
+
+
+%================================================================
+\newpage
+\subsection{Donor and Acceptor Majors}
+%================================================================
+
+The three most significant forces identified as having a strong influence in a student not reaching 4000-level within five years (see Table \ref{table:OR}) are: MAT, WRC, and AIS. 
+
+In this section we explore the influence of these three subject in changing majors. This influence was computed using the Wilcoxon rank sum test for equal medians, and is shown in tables \ref{table:MAT}, \ref {table:WRC} and \ref{table:AIS}. Wilcoxon's test looks at the hypothesis that two independent samples come from distributions with equal medians. 
+
+The columns in tables \ref{table:MAT}, \ref {table:WRC} and \ref{table:AIS} are defioned as follows: 
+\begin{itemize}
+	\item \textbf{Students}: Number of students who changed majors in the period studied. 
+	\item \textbf{Ratio}: Quotient between the subject GPA and the overall GPA for that major.
+	\item \textbf{p}: $p$-value. It has not been corrected for multiple hypothesis (e.g. Benjamini-Hochberg, Bonferroni, etc.), and should be used only as a comparative indicator. 
+\end{itemize}
+ 
+\textbf{The major result of the donor/acceptor analysis} is that poor performance in mathematics has the strongest correlation with abandoning a major among all subject matters.  
+
+\newpage
+
+\begin{sidewaysfigure}[ht]
+  \centering 
+    \includegraphics[width=1\textwidth]{../figure/figDonorAcceptor.pdf}
+    \caption{Donor majors (majors that lose students) are on the left. On the right, acceptor majors show where students go after the first major. figDonorAcceptor}
+    \label{fig:../figure/figDonorAcceptor}
+\end{sidewaysfigure}
+
+
+\newpage
+
+\begin{sidewaystable} 
+	{\scriptsize \ttfamily \begin{longtable}{llllllll}\label{table:MAT}
+	 \centering 
+	 \textbf{Major} & \textbf{Students} & \textbf{Prop} & \textbf{MAT GPA} & \textbf{Non-MAT GPA} & \textbf{Ratio} & \textbf{$H_0$} & \textbf{p-value} \\ 
+	\hline 
+	University College & 4240 & 1 & 2.002 & 2.6185 & 1.3079 & 1 & \color{red}4.9941e-156 \\ 
+	Biology & 3021 & 1 & 1.9504 & 2.548 & 1.3064 & 1 & \color{red}5.8882e-89 \\ 
+	Computer Science & 677 & 1 & 1.5402 & 2.4105 & 1.5651 & 1 & \color{red}3.4888e-52 \\ 
+	Management & 755 & 1 & 1.8417 & 2.5424 & 1.3805 & 1 & \color{red}3.7447e-33 \\ 
+	Marketing & 553 & 1 & 1.6413 & 2.4411 & 1.4874 & 1 & \color{red}3.8387e-33 \\ 
+	Mechanical Engineering & 681 & 1 & 1.7248 & 2.355 & 1.3654 & 1 & \color{red}1.1854e-30 \\ 
+	Chemistry & 516 & 1 & 1.8476 & 2.5386 & 1.374 & 1 & \color{red}2.4176e-23 \\ 
+	General (COB) & 932 & 1 & 2.1931 & 2.6615 & 1.2136 & 1 & \color{red}5.8916e-20 \\ 
+	Kinesiology, Health and Nutrition & 787 & 1 & 2.0075 & 2.5566 & 1.2735 & 1 & \color{red}5.8916e-20 \\ 
+	Electrical and Computer Engineering & 449 & 1 & 1.6914 & 2.3101 & 1.3658 & 1 & \color{red}2.085e-19 \\ 
+	Civil and Environmental Engineering & 365 & 1 & 1.8293 & 2.4949 & 1.3639 & 1 & \color{red}1.0348e-16 \\ 
+	Mathematics & 188 & 1 & 1.8066 & 2.7108 & 1.5005 & 1 & \color{red}8.7991e-15 \\ 
+	Psychology & 471 & 1 & 1.909 & 2.5254 & 1.3229 & 1 & \color{red}1.4554e-14 \\ 
+	General (COS) & 454 & 1 & 2.1611 & 2.61 & 1.2077 & 1 & \color{red}3.7268e-12 \\ 
+	Environmental Science and Ecology & 134 & 1 & 1.5769 & 2.6143 & 1.6579 & 1 & \color{red}6.5172e-11 \\ 
+	Information Systems and Cyber Security & 241 & 1 & 1.6778 & 2.39 & 1.4245 & 1 & \color{red}8.5845e-11 \\ 
+	General (COLFA) & 320 & 1 & 2.2091 & 2.6794 & 1.2129 & 1 & \color{red}3.7995e-09 \\ 
+	General (COE) & 461 & 1 & 2.1379 & 2.4692 & 1.155 & 1 & \color{red}1.2954e-08 \\ 
+	Finance & 331 & 1 & 1.9875 & 2.4986 & 1.2571 & 1 & \color{red}9.9318e-08 \\ 
+	Physics and Astronomy & 129 & 1 & 1.8119 & 2.5327 & 1.3978 & 1 & \color{red}1.9321e-06 \\ 
+	Biomedical Engineering and Chemical Engineering & 297 & 1 & 2.1112 & 2.4994 & 1.1838 & 1 & \color{red}2.4197e-06 \\ 
+	Criminal Justice & 199 & 1 & 1.9309 & 2.453 & 1.2704 & 1 & \color{red}4.9257e-06 \\ 
+	Architecture & 232 & 1 & 1.9707 & 2.4259 & 1.231 & 1 & \color{red}5.1501e-06 \\ 
+	Accounting & 416 & 1 & 2.1567 & 2.4721 & 1.1463 & 1 & \color{red}8.6114e-06 \\ 
+	General (COEHD) & 155 & 1 & 2.2565 & 2.8846 & 1.2784 & 1 & \color{red}8.6114e-06 \\ 
+	English & 102 & 1 & 1.89 & 2.556 & 1.3523 & 1 & \color{red}4.2179e-05 \\ 
+	Political Science and Geography & 156 & 1 & 2.0157 & 2.6223 & 1.3009 & 1 & \color{red}0.00010557 \\ 
+	Geological Sciences & 59 & 1 & 1.6451 & 2.5396 & 1.5438 & 1 & \color{red}0.0001062 \\ 
+	Management Science and Statistics & 68 & 1 & 1.8625 & 2.6966 & 1.4478 & 1 & \color{red}0.00019286 \\ 
+	General (COA) & 146 & 1 & 2.1516 & 2.6726 & 1.2421 & 1 & \color{red}0.00027006 \\ 
+	Undeclared - GATES & 33 & 1 & 1.7073 & 2.5603 & 1.4996 & 1 & \color{red}0.00045866 \\ 
+	Philosophy and Classics & 114 & 1 & 2.0709 & 2.6321 & 1.271 & 0 & \color{red}0.0013674 \\ 
+	Communication & 169 & 1 & 2.0087 & 2.4978 & 1.2435 & 0 & \color{red}0.0015787 \\ 
+	Economics & 108 & 1 & 2.089 & 2.6205 & 1.2544 & 0 & \color{red}0.0034985 \\ 
+	Interdisciplinary Learning and Teaching & 225 & 1 & 2.2514 & 2.6203 & 1.1638 & 0 & \color{red}0.010353 \\ 
+	Sociology & 81 & 1 & 2.0844 & 2.5934 & 1.2442 & 0 & \color{red}0.012683 \\ 
+	Art and Art History & 62 & 1 & 2.0707 & 2.6304 & 1.2703 & 0 & \color{red}0.020298 \\ 
+	History & 60 & 1 & 2.0059 & 2.627 & 1.3096 & 0 & \color{red}0.021861 \\ 
+	Music & 146 & 1 & 2.0444 & 2.4511 & 1.1989 & 0 & \color{red}0.02481 \\ 
+	Anthropology & 37 & 1 & 2.2104 & 2.7235 & 1.2322 & 0 & 0.062182 \\ 
+	Construction Science & 30 & 1 & 1.9306 & 2.4933 & 1.2915 & 0 & 0.11105 \\ 
+	Non Degree Seeking & 11 & 1 & 2.014 & 2.6046 & 1.2932 & 0 & 0.20641 \\ 
+	Modern Languages and Literatures & 32 & 1 & 2.1276 & 2.6113 & 1.2273 & 0 & 0.20789 \\ 
+	COPP  (Admin Unit) & 7 & 1 & 1.5013 & 2.2622 & 1.5069 & 0 & 0.25649 \\ 
+	Public Administration & 13 & 1 & 2.6538 & 3.1531 & 1.1881 & 0 & 0.27563 \\ 
+	Race, Ethnicity, Gender and Sexuality Studies & 31 & 1 & 2.4483 & 2.5893 & 1.0576 & 0 & 0.81044 \\ 
+	\hline 
+	\end{longtable}}
+\end{sidewaystable}
+
+
+\newpage
+
+\begin{sidewaystable}
+{\scriptsize \ttfamily \begin{longtable}{llllllll}\label{table:WRC}
+ \centering 
+ \textbf{Major} & \textbf{Students} & \textbf{Prop} & \textbf{WRC GPA} & \textbf{Non-WRC GPA} & \textbf{Ratio} & \textbf{$H_0$} & \textbf{p-value} \\ 
+\hline 
+University College & 3187 & 1 & 2.4543 & 2.5773 & 1.0501 & 0 & 0.304 \\ 
+Biology & 1849 & 1 & 2.4894 & 2.5047 & 1.0061 & 0 & 0.43144 \\ 
+Criminal Justice & 154 & 1 & 2.1454 & 2.4516 & 1.1427 & 0 & 0.43144 \\ 
+Mechanical Engineering & 422 & 1 & 2.3555 & 2.2819 & 0.96875 & 0 & 0.43144 \\ 
+Biomedical Engineering and Chemical Engineering & 180 & 1 & 2.4775 & 2.402 & 0.96952 & 0 & 0.49539 \\ 
+Chemistry & 306 & 1 & 2.546 & 2.5118 & 0.98655 & 0 & 0.49539 \\ 
+General (COS) & 351 & 1 & 2.5972 & 2.5637 & 0.98711 & 0 & 0.66151 \\ 
+Kinesiology, Health and Nutrition & 546 & 1 & 2.3499 & 2.5063 & 1.0666 & 0 & 0.66151 \\ 
+Computer Science & 353 & 1 & 2.3822 & 2.3555 & 0.98879 & 0 & 0.68419 \\ 
+Information Systems and Cyber Security & 144 & 1 & 2.3876 & 2.3086 & 0.9669 & 0 & 0.73601 \\ 
+Music & 119 & 1 & 2.228 & 2.4694 & 1.1084 & 0 & 0.73601 \\ 
+General (COB) & 570 & 1 & 2.5371 & 2.6379 & 1.0397 & 0 & 0.84077 \\ 
+General (COEHD) & 64 & 1 & 2.5964 & 2.7845 & 1.0724 & 0 & 0.97128 \\ 
+Accounting & 235 & 1 & 2.4094 & 2.5066 & 1.0404 & 0 & 0.98318 \\ 
+Anthropology & 30 & 1 & 2.53 & 2.7331 & 1.0803 & 0 & 0.98318 \\ 
+Architecture & 174 & 1 & 2.2985 & 2.3996 & 1.044 & 0 & 0.98318 \\ 
+Art and Art History & 44 & 1 & 2.699 & 2.6934 & 0.99792 & 0 & 0.98318 \\ 
+COPP  (Admin Unit) & 2 & 1 & 1.7913 & 3.0266 & 1.6897 & 0 & 0.98318 \\ 
+Communication & 111 & 1 & 2.4057 & 2.3727 & 0.9863 & 0 & 0.98318 \\ 
+Construction Science & 16 & 1 & 2.24 & 2.4634 & 1.0997 & 0 & 0.98318 \\ 
+Economics & 76 & 1 & 2.566 & 2.6035 & 1.0146 & 0 & 0.98318 \\ 
+Electrical and Computer Engineering & 273 & 1 & 2.1524 & 2.2036 & 1.0238 & 0 & 0.98318 \\ 
+English & 73 & 1 & 2.4207 & 2.6011 & 1.0745 & 0 & 0.98318 \\ 
+Environmental Science and Ecology & 75 & 1 & 2.5157 & 2.6176 & 1.0405 & 0 & 0.98318 \\ 
+Finance & 198 & 1 & 2.3623 & 2.4945 & 1.056 & 0 & 0.98318 \\ 
+General (COA) & 115 & 1 & 2.5324 & 2.6627 & 1.0515 & 0 & 0.98318 \\ 
+General (COE) & 330 & 1 & 2.4378 & 2.4414 & 1.0015 & 0 & 0.98318 \\ 
+General (COLFA) & 243 & 1 & 2.5834 & 2.6499 & 1.0257 & 0 & 0.98318 \\ 
+Geological Sciences & 25 & 1 & 2.1268 & 2.3878 & 1.1227 & 0 & 0.98318 \\ 
+History & 38 & 1 & 2.4915 & 2.7099 & 1.0877 & 0 & 0.98318 \\ 
+Interdisciplinary Learning and Teaching & 122 & 1 & 2.6312 & 2.649 & 1.0068 & 0 & 0.98318 \\ 
+Management & 400 & 1 & 2.4465 & 2.528 & 1.0333 & 0 & 0.98318 \\ 
+Management Science and Statistics & 36 & 1 & 2.4492 & 2.7426 & 1.1198 & 0 & 0.98318 \\ 
+Marketing & 313 & 1 & 2.3897 & 2.4159 & 1.011 & 0 & 0.98318 \\ 
+Mathematics & 83 & 1 & 2.5317 & 2.6378 & 1.0419 & 0 & 0.98318 \\ 
+Modern Languages and Literatures & 13 & 1 & 2.9108 & 2.7997 & 0.96184 & 0 & 0.98318 \\ 
+Non Degree Seeking & 3 & 1 & 2.335 & 2.5239 & 1.0809 & 0 & 0.98318 \\ 
+Philosophy and Classics & 84 & 1 & 2.3924 & 2.518 & 1.0525 & 0 & 0.98318 \\ 
+Physics and Astronomy & 62 & 1 & 2.432 & 2.4161 & 0.99347 & 0 & 0.98318 \\ 
+Political Science and Geography & 114 & 1 & 2.4397 & 2.5413 & 1.0416 & 0 & 0.98318 \\ 
+Psychology & 315 & 1 & 2.4044 & 2.5082 & 1.0432 & 0 & 0.98318 \\ 
+Public Administration & 6 & 1 & 2.7872 & 2.9838 & 1.0705 & 0 & 0.98318 \\ 
+Race, Ethnicity, Gender and Sexuality Studies & 14 & 1 & 2.5913 & 2.7949 & 1.0786 & 0 & 0.98318 \\ 
+Sociology & 57 & 1 & 2.3283 & 2.4505 & 1.0525 & 0 & 0.98318 \\ 
+Undeclared - GATES & 28 & 1 & 2.5833 & 2.5963 & 1.005 & 0 & 0.98318 \\ 
+Civil and Environmental Engineering & 223 & 1 & 2.3956 & 2.4996 & 1.0434 & 0 & 0.98593 \\ 
+\hline 
+\end{longtable}}
+\end{sidewaystable}
+
+
+\newpage
+
+\begin{sidewaystable}
+{\scriptsize \ttfamily \begin{longtable}{llllllll}\label{table:AIS}
+ \centering 
+ \textbf{Major} & \textbf{Students} & \textbf{Prop} & \textbf{AIS GPA} & \textbf{Non-AIS GPA} & \textbf{Ratio} & \textbf{$H_0$} & \textbf{p-value} \\ 
+\hline 
+Biology & 1795 & 1 & 3.22 & 2.5496 & 0.7918 & 1 & \color{green}8.071e-136 \\ 
+University College & 1927 & 1 & 3.2196 & 2.6518 & 0.82363 & 1 & \color{green}1.9512e-120 \\ 
+Kinesiology, Health and Nutrition & 490 & 1 & 3.1422 & 2.5486 & 0.8111 & 1 & \color{green}3.3946e-29 \\ 
+Chemistry & 313 & 1 & 3.1758 & 2.4832 & 0.78193 & 1 & \color{green}4.4357e-25 \\ 
+Management & 346 & 1 & 3.2572 & 2.6325 & 0.80821 & 1 & \color{green}5.1795e-24 \\ 
+Biomedical Engineering and Chemical Engineering & 219 & 1 & 3.2329 & 2.4727 & 0.76485 & 1 & \color{green}2.0388e-21 \\ 
+Mechanical Engineering & 370 & 1 & 2.9001 & 2.2524 & 0.77666 & 1 & \color{green}4.2699e-21 \\ 
+Computer Science & 292 & 1 & 2.9515 & 2.3073 & 0.78175 & 1 & \color{green}2.5716e-18 \\ 
+Marketing & 273 & 1 & 3.0788 & 2.4079 & 0.78208 & 1 & \color{green}2.8238e-18 \\ 
+Civil and Environmental Engineering & 200 & 1 & 3.1817 & 2.4835 & 0.78057 & 1 & \color{green}1.5807e-17 \\ 
+Electrical and Computer Engineering & 269 & 1 & 2.8415 & 2.1978 & 0.77348 & 1 & \color{green}3.1227e-15 \\ 
+Accounting & 176 & 1 & 3.1847 & 2.5498 & 0.80065 & 1 & \color{green}8.7682e-13 \\ 
+Psychology & 245 & 1 & 2.9708 & 2.4245 & 0.81609 & 1 & \color{green}1.1965e-12 \\ 
+Information Systems and Cyber Security & 131 & 1 & 3.0739 & 2.3663 & 0.7698 & 1 & \color{green}2.5829e-11 \\ 
+General (COB) & 299 & 1 & 3.0719 & 2.6846 & 0.87392 & 1 & \color{green}4.1686e-11 \\ 
+Interdisciplinary Learning and Teaching & 102 & 1 & 3.2778 & 2.6362 & 0.80424 & 1 & \color{green}4.2513e-09 \\ 
+Philosophy and Classics & 96 & 1 & 3.3125 & 2.6307 & 0.79417 & 1 & \color{green}5.256e-09 \\ 
+Criminal Justice & 127 & 1 & 2.9738 & 2.4387 & 0.82007 & 1 & \color{green}5.5962e-08 \\ 
+Mathematics & 61 & 1 & 3.4428 & 2.686 & 0.78017 & 1 & \color{green}1.5543e-07 \\ 
+Finance & 160 & 1 & 2.9802 & 2.548 & 0.85498 & 1 & \color{green}7.3479e-07 \\ 
+Economics & 47 & 1 & 3.4362 & 2.6307 & 0.76561 & 1 & \color{green}9.0222e-07 \\ 
+Political Science and Geography & 89 & 1 & 3.2022 & 2.6324 & 0.82206 & 1 & \color{green}1.6386e-06 \\ 
+Sociology & 73 & 1 & 3.3014 & 2.6478 & 0.80203 & 1 & \color{green}1.6386e-06 \\ 
+Communication & 81 & 1 & 3.0679 & 2.5249 & 0.82301 & 1 & \color{green}1.3234e-05 \\ 
+Environmental Science and Ecology & 60 & 1 & 3.1695 & 2.5787 & 0.81358 & 1 & \color{green}8.2779e-05 \\ 
+English & 59 & 1 & 3.2092 & 2.6736 & 0.83313 & 1 & \color{green}0.00014691 \\ 
+General (COA) & 70 & 1 & 3.2286 & 2.7742 & 0.85925 & 1 & \color{green}0.00041322 \\ 
+Physics and Astronomy & 58 & 1 & 3.0862 & 2.4715 & 0.80082 & 1 & \color{green}0.0005228 \\ 
+Architecture & 121 & 1 & 2.8351 & 2.4756 & 0.87321 & 0 & \color{green}0.0015467 \\ 
+Art and Art History & 34 & 1 & 3.1126 & 2.4193 & 0.77725 & 0 & \color{green}0.0019817 \\ 
+Management Science and Statistics & 30 & 1 & 3.2223 & 2.596 & 0.80564 & 0 & \color{green}0.0023164 \\ 
+Geological Sciences & 20 & 1 & 3.425 & 2.5974 & 0.75838 & 0 & \color{green}0.0056737 \\ 
+History & 30 & 1 & 3.0223 & 2.6253 & 0.86864 & 0 & \color{green}0.027549 \\ 
+General (COE) & 46 & 1 & 2.9022 & 2.5393 & 0.87498 & 0 & \color{green}0.029068 \\ 
+Race, Ethnicity, Gender and Sexuality Studies & 11 & 1 & 3.2727 & 2.5529 & 0.78004 & 0 & \color{green}0.030544 \\ 
+Modern Languages and Literatures & 9 & 1 & 3.2222 & 2.6909 & 0.83511 & 0 & 0.057969 \\ 
+General (COLFA) & 4 & 1 & 3.75 & 2.4011 & 0.64029 & 0 & 0.067954 \\ 
+Music & 76 & 1 & 2.5613 & 2.4034 & 0.93835 & 0 & 0.12347 \\ 
+Anthropology & 10 & 1 & 2.633 & 2.3562 & 0.89489 & 0 & 0.22138 \\ 
+Construction Science & 10 & 1 & 3.117 & 2.7489 & 0.88189 & 0 & 0.33542 \\ 
+Non Degree Seeking & 2 & 1 & 3 & 2.3917 & 0.79722 & 0 & 0.35772 \\ 
+Public Administration & 7 & 1 & 3.2857 & 2.9807 & 0.90718 & 0 & 0.38339 \\ 
+COPP  (Admin Unit) & 1 & 1 & 3 & 2.3959 & 0.79865 & 0 & 1 \\ 
+General (COS) & 1 & 1 & 3 & 2.4286 & 0.80952 & 0 & 1 \\ 
+\hline 
+\end{longtable}} 
+\end{sidewaystable}
+
+
+%%================================================================
+%\section{Odds Ratio Sorted by Alphabetical Order 2013.66-2018.66}
+%%================================================================
+%
+%To interpret the odds ratio (OD), keep in mind that an $OD > 1$ is bad for students, and an $OD < 1$ is beneficial. If the column $H_0 = 1$, then the null hypothesis is rejected, i.e. there is a true effect; however, the $p$-value has not been corrected for multiple hypothesis (e.g. Benjamini-Hochberg, Bonferroni, etc.), and should be used only as a comparative indicator. 
+%{\scriptsize \ttfamily 
+%\begin{longtable}{llllllllll}
+ %\centering 
+%Subject & OR & $H_0$ & p & a & b & c & d & PercNO4K & PercStd \\ 
+%\hline 
+%AAS & 0.4481 & 1 & 2.265e-36 & 337 & 746 & 29731 & 29491 & 0.0055883 & 0.017959 \\ 
+%ACC & 0.52677 & 1 & 1.3068e-192 & 3651 & 6875 & 29731 & 29491 & 0.052346 & 0.15091 \\ 
+%AHC & 0.75964 & 1 & 2.7604e-21 & 2262 & 2954 & 29728 & 29491 & 0.035105 & 0.08095 \\ 
+%AHS & NaN & 0 & 1 & 0 & 0 & 29731 & 29491 & 0 & 0 \\ 
+%AIS & 1.9023 & 1 & 1.4328e-322 & 14594 & 7611 & 29727 & 29491 & 0.17924 & 0.27271 \\ 
+%AMS & 0.29339 & 1 & 1.6521e-45 & 147 & 497 & 29731 & 29491 & 0.0024555 & 0.010757 \\ 
+%ANT & 0.7604 & 1 & 4.091e-33 & 3859 & 5034 & 29729 & 29489 & 0.056658 & 0.13057 \\ 
+%ARA & 0.43397 & 1 & 2.1782e-05 & 35 & 80 & 29731 & 29491 & 0.00058985 & 0.0019381 \\ 
+%ARC & 0.56989 & 1 & 1.8232e-26 & 559 & 973 & 29718 & 29479 & 0.0092048 & 0.025227 \\ 
+%ART & 0.48636 & 1 & 6.1896e-178 & 2447 & 4991 & 29728 & 29490 & 0.036711 & 0.11159 \\ 
+%ASC & 0.86963 & 0 & 0.103 & 270 & 308 & 29728 & 29491 & 0.0045153 & 0.009666 \\ 
+%ASL & NaN & 0 & 1 & 0 & 0 & 29731 & 29491 & 0 & 0 \\ 
+%AST & 0.66497 & 1 & 2.3352e-42 & 1985 & 2961 & 29731 & 29491 & 0.030934 & 0.077079 \\ 
+%BBL & 0.25556 & 1 & 2.2398e-221 & 573 & 2224 & 29731 & 29491 & 0.0092391 & 0.045099 \\ 
+%BIO & 0.81505 & 1 & 1.2623e-37 & 9711 & 11820 & 29727 & 29491 & 0.12026 & 0.26664 \\ 
+%BLW & 0.08863 & 1 & 1.2846e-322 & 631 & 7062 & 29731 & 29491 & 0.0094299 & 0.11497 \\ 
+%BME & 0.46264 & 1 & 1.171e-12 & 118 & 253 & 29731 & 29491 & 0.0019801 & 0.0062256 \\ 
+%CandI & NaN & 0 & 1 & 0 & 0 & 29731 & 29491 & 0 & 0 \\ 
+%CE & 0.63789 & 1 & 1.7417e-15 & 517 & 804 & 29729 & 29491 & 0.0085397 & 0.02182 \\ 
+%CHE & 1.0695 & 1 & 7.7465e-05 & 9428 & 8746 & 29726 & 29491 & 0.12182 & 0.23483 \\ 
+%CHN & 1.06 & 0 & 0.55807 & 218 & 204 & 29731 & 29491 & 0.003655 & 0.0070753 \\ 
+%CLA & 0.52218 & 1 & 2.5299e-87 & 1444 & 2743 & 29731 & 29491 & 0.022773 & 0.066032 \\ 
+%CME & 0.7831 & 0 & 0.49783 & 15 & 19 & 29731 & 29491 & 0.00025314 & 0.00057378 \\ 
+%COA & 0.16262 & 1 & 2.3444e-28 & 30 & 183 & 29729 & 29491 & 0.00050477 & 0.0035839 \\ 
+%COM & 0.37948 & 1 & 1.0375e-322 & 2892 & 7560 & 29729 & 29491 & 0.041509 & 0.15002 \\ 
+%COR & 0.82245 & 0 & 0.065808 & 165 & 199 & 29731 & 29491 & 0.0027691 & 0.0061088 \\ 
+%COU & 0.1155 & 1 & 1.8308e-153 & 102 & 876 & 29731 & 29491 & 0.0016944 & 0.016246 \\ 
+%CPE & 0 & 1 & 9.7134e-27 & 0 & 86 & 29731 & 29491 & 0 & 0.0014501 \\ 
+%CRJ & 0.36678 & 1 & 4.0543e-198 & 1166 & 3153 & 29729 & 29486 & 0.018352 & 0.067979 \\ 
+%CS & 0.69011 & 1 & 4.157e-57 & 3520 & 5062 & 29708 & 29483 & 0.051938 & 0.12663 \\ 
+%CSH & 0.51381 & 1 & 2.9985e-28 & 403 & 778 & 29731 & 29491 & 0.0066719 & 0.019552 \\ 
+%CSM & 0.080468 & 1 & 4.7232e-130 & 52 & 641 & 29731 & 29491 & 0.0008679 & 0.011566 \\ 
+%CSS & 0.78038 & 1 & 0.017445 & 166 & 211 & 29731 & 29491 & 0.0027853 & 0.0063256 \\ 
+%DAN & 0.46041 & 1 & 8.0543e-38 & 382 & 823 & 29731 & 29491 & 0.0063217 & 0.019941 \\ 
+%ECE & 0.093103 & 1 & 9.5623e-268 & 133 & 1417 & 29731 & 29491 & 0.0021885 & 0.025505 \\ 
+%ECO & 0.74251 & 1 & 1.2357e-65 & 7374 & 9851 & 29731 & 29491 & 0.096459 & 0.22532 \\ 
+%EDL & 0.019149 & 1 & 4.1202e-70 & 5 & 259 & 29731 & 29491 & 8.4053e-05 & 0.004438 \\ 
+%EDP & 0.12886 & 1 & 3.6366e-258 & 205 & 1578 & 29731 & 29491 & 0.0033604 & 0.029227 \\ 
+%EDU & 0.29549 & 1 & 6.6583e-152 & 524 & 1759 & 29731 & 29491 & 0.0085196 & 0.037119 \\ 
+%EE & 0.48382 & 1 & 2.9643e-78 & 976 & 2001 & 29731 & 29491 & 0.015692 & 0.047863 \\ 
+%EGR & 0.4958 & 1 & 5.3039e-101 & 1399 & 2799 & 29730 & 29491 & 0.02206 & 0.066195 \\ 
+%EIS & 1.3478 & 1 & 0.02967 & 125 & 92 & 29730 & 29491 & 0.002103 & 0.0036509 \\ 
+%ENG & 0.36272 & 1 & 9.8813e-323 & 2623 & 7173 & 29731 & 29491 & 0.038005 & 0.14193 \\ 
+%ENT & 0.028408 & 1 & 1.1705e-107 & 12 & 419 & 29731 & 29491 & 0.00020116 & 0.0072251 \\ 
+%ES & 1.1168 & 1 & 0.00022305 & 2566 & 2279 & 29731 & 29491 & 0.040052 & 0.075624 \\ 
+%ESL & 0.092626 & 1 & 1.0014e-271 & 134 & 1435 & 29731 & 29491 & 0.0022043 & 0.02581 \\ 
+%FIN & 0.094702 & 1 & 1.1858e-322 & 736 & 7709 & 29731 & 29491 & 0.010877 & 0.1248 \\ 
+%FL & 0.10803 & 1 & 4.735e-38 & 22 & 202 & 29731 & 29491 & 0.00037008 & 0.0037681 \\ 
+%FM & 0 & 1 & 1.1359e-17 & 0 & 56 & 29731 & 29491 & 0 & 0.0009447 \\ 
+%FRN & 0.59238 & 1 & 3.2921e-16 & 384 & 643 & 29731 & 29491 & 0.0063735 & 0.017046 \\ 
+%GBA & 0.35043 & 1 & 1.1858e-322 & 2562 & 7252 & 29731 & 29491 & 0.037111 & 0.14216 \\ 
+%GEM & 0.39677 & 1 & 1.4501e-13 & 82 & 205 & 29731 & 29491 & 0.0013779 & 0.0048228 \\ 
+%GEO & 0.69118 & 1 & 5.1722e-60 & 3771 & 5412 & 29730 & 29491 & 0.055128 & 0.13425 \\ 
+%GER & 0.67238 & 1 & 1.2633e-05 & 202 & 298 & 29731 & 29491 & 0.0033823 & 0.0083721 \\ 
+%GES & 1.2903 & 1 & 4.189e-11 & 1605 & 1234 & 29727 & 29491 & 0.025863 & 0.045748 \\ 
+%GLA & 0.50416 & 1 & 1.2657e-27 & 369 & 726 & 29730 & 29490 & 0.0061179 & 0.018155 \\ 
+%GRG & 0.37473 & 1 & 1.0991e-250 & 1596 & 4225 & 29729 & 29491 & 0.024538 & 0.089497 \\ 
+%GRK & 1.1053 & 0 & 0.56519 & 78 & 70 & 29731 & 29491 & 0.0013138 & 0.0024928 \\ 
+%HIS & 1.1763 & 1 & 1.108e-27 & 14139 & 11926 & 29723 & 29491 & 0.1658 & 0.30564 \\ 
+%HON & 0.27727 & 1 & 9.3505e-105 & 310 & 1109 & 29731 & 29491 & 0.0051121 & 0.0234 \\ 
+%HTH & 0.15839 & 1 & 8.8932e-323 & 846 & 5298 & 29731 & 29491 & 0.012943 & 0.093994 \\ 
+%HUM & 0.27001 & 1 & 1.2492e-183 & 527 & 1936 & 29731 & 29491 & 0.0085434 & 0.039929 \\ 
+%IDE & 0.1945 & 1 & 2.085e-21 & 30 & 153 & 29731 & 29491 & 0.00050501 & 0.0030805 \\ 
+%IDS & 0.29811 & 1 & 1.6144e-246 & 892 & 2968 & 29731 & 29491 & 0.01414 & 0.06119 \\ 
+%INS & 0.16532 & 1 & 0.007169 & 2 & 12 & 29731 & 29491 & 3.3763e-05 & 0.00023634 \\ 
+%IS & 0.62602 & 1 & 5.0257e-140 & 5733 & 9090 & 29711 & 29491 & 0.077447 & 0.20024 \\ 
+%ITL & 0.63661 & 1 & 3.2453e-06 & 172 & 268 & 29731 & 29491 & 0.0028829 & 0.0073749 \\ 
+%JPN & 0.69169 & 1 & 6.9133e-08 & 364 & 522 & 29731 & 29491 & 0.0060558 & 0.01474 \\ 
+%KAH & 0 & 0 & 0.061503 & 0 & 4 & 29731 & 29491 & 0 & 6.7538e-05 \\ 
+%KIN & 0.40024 & 1 & 3.8587e-263 & 2028 & 5026 & 29731 & 29491 & 0.030599 & 0.10643 \\ 
+%KOR & 0.53596 & 1 & 3.2005e-05 & 67 & 124 & 29731 & 29491 & 0.0011277 & 0.0032148 \\ 
+%LAS & 0.11021 & 1 & 0.011412 & 1 & 9 & 29731 & 29491 & 1.6883e-05 & 0.00016883 \\ 
+%LAT & 0.69818 & 1 & 0.00041559 & 164 & 233 & 29731 & 29491 & 0.0027508 & 0.006659 \\ 
+%LGS & 0.066129 & 1 & 7.9108e-139 & 43 & 645 & 29731 & 29491 & 0.00071774 & 0.011484 \\ 
+%LNG & 0.19315 & 1 & 7.1156e-41 & 59 & 303 & 29731 & 29491 & 0.0009902 & 0.0060755 \\ 
+%LTED & 0.12788 & 1 & 7.4062e-139 & 107 & 830 & 29731 & 29491 & 0.0017786 & 0.015575 \\ 
+%MAS & 0.53316 & 1 & 4.7858e-24 & 387 & 720 & 29731 & 29491 & 0.0064148 & 0.018349 \\ 
+%MAT & 1.4774 & 1 & 7.5969e-189 & 22385 & 15053 & 29684 & 29491 & 0.2317 & 0.3875 \\ 
+%MDS & 0.052619 & 1 & 8.8897e-201 & 47 & 886 & 29731 & 29491 & 0.00078131 & 0.01551 \\ 
+%ME & 0.65816 & 1 & 1.1043e-26 & 1116 & 1682 & 29730 & 29491 & 0.017994 & 0.045115 \\ 
+%MES & 0.12399 & 1 & 2.7199e-54 & 39 & 312 & 29731 & 29491 & 0.00065466 & 0.0058919 \\ 
+%MGT & 0.23089 & 1 & 9.8813e-323 & 2560 & 10998 & 29731 & 29491 & 0.035174 & 0.18629 \\ 
+%MHU & 0.40826 & 1 & 4.093e-37 & 263 & 639 & 29731 & 29491 & 0.0043743 & 0.015002 \\ 
+%MKT & 0.27258 & 1 & 9.3872e-323 & 2291 & 8337 & 29731 & 29491 & 0.032799 & 0.15215 \\ 
+%MOT & 0 & 1 & 3.7117e-197 & 0 & 654 & 29731 & 29491 & 0 & 0.010923 \\ 
+%MS & 0.38233 & 1 & 9.8813e-323 & 2740 & 7110 & 29726 & 29491 & 0.039672 & 0.14262 \\ 
+%MSC & 0.90894 & 0 & 0.31387 & 230 & 251 & 29731 & 29491 & 0.0038524 & 0.0080565 \\ 
+%MSM & 0.049105 & 1 & 1.0364e-24 & 5 & 101 & 29731 & 29491 & 8.4277e-05 & 0.0017867 \\ 
+%MUS & 0.59609 & 1 & 2.7463e-105 & 3135 & 5218 & 29720 & 29487 & 0.046403 & 0.12364 \\ 
+%NCB & 4.1594 & 1 & 3.4064e-55 & 499 & 119 & 29731 & 29491 & 0.0083389 & 0.010328 \\ 
+%NDT & 0.93158 & 0 & 0.44968 & 247 & 263 & 29731 & 29491 & 0.0041351 & 0.0085381 \\ 
+%NPO & 0.084281 & 1 & 6.3848e-32 & 13 & 153 & 29731 & 29491 & 0.0002189 & 0.0027952 \\ 
+%PAD & 0.29969 & 1 & 7.0116e-75 & 258 & 854 & 29729 & 29491 & 0.0042763 & 0.018431 \\ 
+%PAL & 0.23598 & 1 & 4.2586e-29 & 59 & 248 & 29731 & 29491 & 0.00099111 & 0.0051572 \\ 
+%PHI & 0.64131 & 1 & 3.8541e-29 & 1070 & 1655 & 29731 & 29491 & 0.017273 & 0.043989 \\ 
+%PHY & 0.54609 & 1 & 5.0098e-185 & 4059 & 7378 & 29710 & 29491 & 0.057462 & 0.16191 \\ 
+%POL & 1.0794 & 1 & 3.3362e-08 & 16877 & 15515 & 29720 & 29491 & 0.18424 & 0.35361 \\ 
+%PSY & 0.96806 & 0 & 0.065302 & 8211 & 8414 & 29729 & 29491 & 0.10826 & 0.2192 \\ 
+%QLE & 0.012867 & 1 & 9.8813e-324 & 22 & 1696 & 29731 & 29491 & 0.00036101 & 0.028192 \\ 
+%QLW & 0.061405 & 1 & 4.4849e-93 & 26 & 420 & 29731 & 29491 & 0.00043574 & 0.0074747 \\ 
+%RDG & 0.11371 & 1 & 4.4466e-323 & 231 & 2015 & 29731 & 29491 & 0.0037581 & 0.036539 \\ 
+%RFD & 0.01945 & 1 & 1.202e-55 & 4 & 204 & 29731 & 29491 & 6.7306e-05 & 0.0034999 \\ 
+%RUS & 0.7047 & 1 & 0.00010297 & 211 & 297 & 29731 & 29491 & 0.0035326 & 0.0085049 \\ 
+%SET & 0.078262 & 1 & 5.6082e-112 & 43 & 545 & 29731 & 29491 & 0.00071894 & 0.0098311 \\ 
+%SOC & 0.6173 & 1 & 2.8252e-178 & 7224 & 11610 & 29725 & 29490 & 0.092557 & 0.24131 \\ 
+%SPE & 0.15606 & 1 & 3.4585e-323 & 351 & 2231 & 29731 & 29491 & 0.0056792 & 0.041777 \\ 
+%SPN & 0.54299 & 1 & 1.0762e-148 & 3061 & 5592 & 29730 & 29491 & 0.045098 & 0.12749 \\ 
+%STA & 0.57692 & 1 & 5.9067e-153 & 4159 & 7152 & 29726 & 29491 & 0.058969 & 0.16038 \\ 
+%THR & 0.22961 & 1 & 8.786e-14 & 25 & 108 & 29731 & 29491 & 0.00042119 & 0.0022408 \\ 
+%TIS & 0.66129 & 0 & 0.68624 & 2 & 3 & 29731 & 29491 & 3.3768e-05 & 8.4421e-05 \\ 
+%TSP & 0.099193 & 1 & 0.0061588 & 1 & 10 & 29731 & 29491 & 1.6882e-05 & 0.00018571 \\ 
+%UCS & 0.36738 & 1 & 7.1071e-16 & 80 & 216 & 29731 & 29491 & 0.0013441 & 0.0049733 \\ 
+%UPM & 55.5479 & 1 & 8.1407e-16 & 56 & 1 & 29731 & 29491 & 0.00094469 & 0.00096155 \\ 
+%URP & 0 & 1 & 0.00011597 & 0 & 13 & 29731 & 29491 & 0 & 0.00021946 \\ 
+%UTE & 2.8341 & 1 & 7.0314e-10 & 120 & 42 & 29731 & 29491 & 0.0020207 & 0.002728 \\ 
+%WRC & 1.7542 & 1 & 7.7209e-267 & 13991 & 7913 & 29725 & 29491 & 0.17247 & 0.27002 \\ 
+%WS & 0.4443 & 1 & 1.8355e-81 & 774 & 1728 & 29731 & 29491 & 0.01254 & 0.040535 \\ 
+%\hline 
+%\end{longtable}} 
+ %
+
+
+%{\scriptsize \ttfamily 
+%\begin{longtable}{llllllllll}
+%\centering 
+%Subject & OR & $H_0$ & p & a & b & c & d & PercNO4K & PercStd \\ 
+
+%{\scriptsize \ttfamily 
+%\begin{longtable}{rrr}
+  %\centering
+    %\textbf{SUBJECT} & \textbf{CH} & \textbf{REVENUE} \\
+		%\hline 
+    %1073  & 6030  &  \$             502,178  \\
+    %1093  & 5058  &  \$             421,230  \\
+    %1224  & 4924  &  \$             410,071  \\
+    %1214  & 4500  &  \$             374,760  \\
+    %1133  & 3291  &  \$             274,074  \\
+    %1023  & 3222  &  \$             268,328  \\
+    %1053  & 2994  &  \$             249,340  \\
+    %1043  & 1380  &  \$             114,926  \\
+    %1193  & 1362  &  \$             113,427  \\
+    %2214  & 1084  &  \$               90,276  \\
+    %2233  & 885   &  \$               73,703  \\
+    %213   & 831   &  \$               57,838  \\
+    %203   & 633   &  \$               44,057  \\
+    %3013  & 621   &  \$               51,717  \\
+    %1153  & 597   &  \$               49,718  \\
+    %1163  & 525   &  \$               43,722  \\
+    %3613  & 498   &  \$               41,473  \\
+    %1033  & 489   &  \$               40,724  \\
+    %3213  & 393   &  \$               32,729  \\
+    %3103  & 276   &  \$               22,985  \\
+    %4213  & 258   &  \$               21,486  \\
+    %3123  & 210   &  \$               17,489  \\
+    %4233  & 168   &  \$               13,991  \\
+    %3233  & 165   &  \$               13,741  \\
+    %4913  & 114   &  \$                 9,494  \\
+    %4303  & 114   &  \$                 9,494  \\
+    %4113  & 114   &  \$                 9,494  \\
+    %4013  & 108   &  \$                 8,994  \\
+    %3633  & 93    &  \$                 7,745  \\
+    %3623  & 87    &  \$                 7,245  \\
+    %4263  & 57    &  \$                 4,747  \\
+    %4223  & 57    &  \$                 4,747  \\
+    %4273  & 45    &  \$                 3,748  \\
+    %4953  & 33    &  \$                 2,748  \\
+    %4353  & 18    &  \$                 1,499  \\
+    %2113  & 15    &  \$                 1,249  \\
+    %5013  & 6     &  \$                     500  \\
+    %5673  & 6     &  \$                     500  \\
+    %5683  & 3     &  \$                     250  \\
+    %5023  & 3     &  \$                     250  \\
+    %5203  & 3     &  \$                     250  \\
+    %5243  & 3     &  \$                     250  \\
+    %5323  & 3     &  \$                     250  \\
+    %\hline
+  %\caption{Revenue MAT}
+  %\label{tab:addlabel}%
+%\end{longtable}%
+
+
