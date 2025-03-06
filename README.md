@@ -1,6 +1,6 @@
-# StudentSuccessDataAnalysis
+# Student Success Data Analysis Pipeline
 
-Student Success Data Analysis. The point of entry is /script/aaPipeline.m
+The point of entry is /script/aaPipeline.m
 
 The Comprehensive Academic Analysis Pipeline produces one volume for each college. All data will be anonymized and/or aggregated. Within each volume, there is a chapter for each department. The content of each report is as follows: 
 
@@ -52,163 +52,232 @@ The Comprehensive Academic Analysis Pipeline produces one volume for each colleg
          4. For each course in the subject (e.g. BIO101):
             1. Bubble diagram of each course showing all instructors who have taught it, by total number of students vs. DFW. Radius of each item is proportional to total students served.
 3. Interpretation of results. Identification of critical areas in need of improvement and recommendations. 
-Student Data Structure
+
+# Student Data Structure
+
 Student data is collected in two data tables as described in this section. The first table, called DATA, contains student, section, and instructor data.  
-Sociodemographic Information
-	Identifier
-	Student Identifier
-	RACE
-	Race as of first term
-	ETHNICITY
-	Ethnicity as of first term
-	GENDER
-	Gender as of first term
-	FA_APPLIED
-	Did the student apply for financial aid their first academic year? (Applied, Did not apply)
-	AGI
-	Adjusted gross income as listed on the financial aid application the first academic year
-	PELLSTATUS
-	Did student receive a pell grant their first academic year? (Pell Paid, No Pell)
-	FIRSTGENERATIONSTATUS
-	First Generation means that neither of the students parents graduated college
-	ZIPCODE
-	First known zip code of the student
-	STUDENTTYPE
-	Entering Status (new or transfer)
-	FIRSTTERMCODE
-	Entering Term Code (YEAR.00 = Spring, YEAR.33=Summer, YEAR.66=Fall)
-	Academic Performance outside college
-	SAT_COMPOSITE
-	SAT Composite - New test (max)
-	SAT_MATH
-	SAT Math - New test (max)
-	SAT_ERW
-	SAT Evidence-Based  Reading and Writing - New test (max)
-	SAT_COMPOSITE_OLD
-	SAT Composite - Old test (max) - not converted
-	SAT_MATH_OLD
-	SAT Math - Old test (max) - not converted
-	SAT_VERBAL_OLD
-	SAT Verbal - Old test (max) - not converted
-	SAT_WRITING_OLD
-	SAT Writing - Old test (max) - not converted
-	SATOLD_WCR
-	SAT Verbal + Writing Score - Old test - not converted
-	SAT_COMPOSITE_CONVERTED
-	SAT Composite old score converted to new SAT Composite score
-	SAT_MATH_CONVERTED
-	SAT Math old score converted to new SAT Math score
-	SAT_WCR_CONVERTED
-	SAT Verbal + Writing old score converted to new SAT ERW score (please note that many students did not submit an old writing score; we cannot convert without this score
-	ACT_COMPOSITE
-	ACT Composite (max)
-	ACT_MATH
-	ACT Math  (max)
-	ACT_ENG
-	ACT English (max)
-	ACT_READ
-	ACT Reading (max)
-	ACT_ER
-	ACT English + Reading
-	ACT_SCIREAS
-	ACT Science  (max)
-	ACT_WRITE
-	ACT Writing (max)
-	ACT_COMPOSITE_CONVERTED
-	ACT Composite converted to new SAT composite score
-	ACT_MATH_CONVERTED
-	ACT Math converted to new SAT Math score
-	ACT_ER_CONVERTED
-	ACT English + Reading converted to new SAT ERW score
-	HIGHEST_SATACT_COMPOSITE
-	Highest of new SAT, old SAT, or ACT composite scores
-	HIGHEST_SATACT_MATH
-	Highest of new SAT, old SAT, or ACT math scores
-	HIGHEST_SATACT_ERW
-	Highest of new SAT, old SAT, or ACT ERW scores
-	HIGHSCHOOLNAME
-	High school name
-	HIGHSCHOOLCITY
-	High school city
-	HIGHSCHOOLSTATE
-	High school state
-	HIGHSCHOOLZIP
-	High school zip code
-	COLALGEBRA_AP_GRDE
-	Grade/credit from AP test for College Algebra (Grade must be above a C)
-	COLALGEBRA_DUAL_GRDE
-	Grade/credit from dual credit course for College Algebra (Grade must be above a C)
-	COLALGEBRA_CLEP_GRDE
-	Grade/credit from CLEP test for College Algebra (Grade must be above a C)
-	PRECALCULUS_AP_GRDE
-	Grade/credit from AP test for Precalculus (Grade must be above a C)
-	PRECALCULUS_DUAL_GRDE
-	Grade/credit from dual credit course for Precalculus (Grade must be above a C)
-	PRECALCULUS_CLEP_GRDE
-	Grade/credit from CLEP test for Precalculus  (Grade must be above a C)
-	CALCULUS1_AP_GRDE
-	Grade/credit from AP test for Calculus 1  (Grade must be above a C)
-	CALCULUS1_DUAL_GRDE
-	Grade/credit from dual credit course for Calculus 1  (Grade must be above a C)
-	CALCULUS1_CLEP_GRDE
-	Grade/credit from CLEP test for Calculus 2 (Grade must be above a C)
-	CALCULUS2_AP_GRDE
-	Grade/credit from AP test for Calculus 2  (Grade must be above a C)
-	CALCULUS2_DUAL_GRDE
-	Grade/credit from dual credit course for Calculus 2 (Grade must be above a C)
-	CALCULUS2_CLEP_GRDE
-	Grade/credit from CLEP test for Calculus 2  (Grade must be above a C)
-	Term Code Specific Information (Program of Study, College, Department and Courses)
-	CURRENTTERM
-	Current Semester
-	CURRENTTERMCODE
-	Current Term Code (YEAR.00 = Spring, YEAR.33=Summer, YEAR.66=Fall)
-	PROGRAM
-	Program as of Current Semester
-	COLLEGE
-	College as of Current Semester
-	DEPARTMENT
-	Department as of Current Semester
-	SHRTCKN_SUBJ_CODE
-	Subject Code
-	SUBJDESC
-	Course Subject
-	SUBJECT
-	Course Subject Description
-	SHRTCKN_SEQ_NUMB
-	Current Term Section Number
-	SHRTCKN_CRN
-	Current Term Section ID
-	SHRTCKN_CRSE_TITLE
-	Current Term Course Title
-	PRIMARY_INSTRUCTOR_ID
-	Current Term Faculty ID
-	PRIMARY_INSTRUCTOR_RACE-ETH
-	Current Term Faculty Race/Ethnicity
-	SHRTCKG_CREDIT_HOURS
-	Current Term Course Credit Hours
-	MIDTERM_GRADE
-	Current Term Course Midterm Grade (nulls indicate withdrawals or that course did not have midterm)
-	SHRTCKG_GRDE_CODE_FINAL
-	Current Term Course Grade
-	SHRGRDE_QUALITY_POINTS
-	Current Term Course Grade Points
-	SHRGRDE_GPA_IND
-	Current Term GPA Indicator (included in GPA  Y, not included = N)
-	SHRTCKN_REPEAT_COURSE_IND
-	Current Term Course Repeat indicator
-	STVSCHD_DESC
-	Current Term Course Type (face to face, internet, etc)
-	First Graduation Date
-	FIRSTGRADDATE
-	First Graduation Date 
-	FIRSTGRADPROGRAM
-	First Graduation Program
-	FIRSTGRADCOLLEGE
-	First Graduation College
-	FIRSTGRADDEPT
-	First Graduation Department
-	
+RACE
+Race as of first term
+
+ETHNICITY
+Ethnicity as of first term
+
+GENDER
+Gender as of first term
+
+FA_APPLIED
+Did the student apply for financial aid their first academic year? (Applied, Did not apply)
+
+AGI
+Adjusted gross income as listed on the financial aid application the first academic year
+
+PELLSTATUS
+Did student receive a pell grant their first academic year? (Pell Paid, No Pell)
+
+FIRSTGENERATIONSTATUS
+First Generation means that neither of the students parents graduated college
+
+ZIPCODE
+First known zip code of the student
+
+STUDENTTYPE
+Entering Status (new or transfer)
+
+FIRSTTERMCODE
+Entering Term Code (YEAR.00 = Spring, YEAR.33=Summer, YEAR.66=Fall)
+Academic Performance outside college
+SAT_COMPOSITE
+SAT Composite - New test (max)
+
+SAT_MATH
+SAT Math - New test (max)
+
+SAT_ERW
+SAT Evidence-Based  Reading and Writing - New test (max)
+
+SAT_COMPOSITE_OLD
+SAT Composite - Old test (max) - not converted
+
+SAT_MATH_OLD
+SAT Math - Old test (max) - not converted
+
+SAT_VERBAL_OLD
+SAT Verbal - Old test (max) - not converted
+
+SAT_WRITING_OLD
+SAT Writing - Old test (max) - not converted
+
+SATOLD_WCR
+SAT Verbal + Writing Score - Old test - not converted
+
+SAT_COMPOSITE_CONVERTED
+SAT Composite old score converted to new SAT Composite score
+
+SAT_MATH_CONVERTED
+SAT Math old score converted to new SAT Math score
+
+SAT_WCR_CONVERTED
+SAT Verbal + Writing old score converted to new SAT ERW score (please note that many students did not submit an old writing score; we cannot convert without this score
+
+ACT_COMPOSITE
+ACT Composite (max)
+
+ACT_MATH
+ACT Math  (max)
+
+ACT_ENG
+ACT English (max)
+
+ACT_READ
+ACT Reading (max)
+
+ACT_ER
+ACT English + Reading
+
+ACT_SCIREAS
+ACT Science  (max)
+
+ACT_WRITE
+ACT Writing (max)
+
+ACT_COMPOSITE_CONVERTED
+ACT Composite converted to new SAT composite score
+
+ACT_MATH_CONVERTED
+ACT Math converted to new SAT Math score
+
+ACT_ER_CONVERTED
+ACT English + Reading converted to new SAT ERW score
+
+HIGHEST_SATACT_COMPOSITE
+Highest of new SAT, old SAT, or ACT composite scores
+
+HIGHEST_SATACT_MATH
+Highest of new SAT, old SAT, or ACT math scores
+
+HIGHEST_SATACT_ERW
+Highest of new SAT, old SAT, or ACT ERW scores
+
+HIGHSCHOOLNAME
+High school name
+
+HIGHSCHOOLCITY
+High school city
+
+HIGHSCHOOLSTATE
+High school state
+
+HIGHSCHOOLZIP
+High school zip code
+
+COLALGEBRA_AP_GRDE
+Grade/credit from AP test for College Algebra (Grade must be above a C)
+
+COLALGEBRA_DUAL_GRDE
+Grade/credit from dual credit course for College Algebra (Grade must be above a C)
+
+COLALGEBRA_CLEP_GRDE
+Grade/credit from CLEP test for College Algebra (Grade must be above a C)
+
+PRECALCULUS_AP_GRDE
+Grade/credit from AP test for Precalculus (Grade must be above a C)
+
+PRECALCULUS_DUAL_GRDE
+Grade/credit from dual credit course for Precalculus (Grade must be above a C)
+
+PRECALCULUS_CLEP_GRDE
+Grade/credit from CLEP test for Precalculus  (Grade must be above a C)
+
+CALCULUS1_AP_GRDE
+Grade/credit from AP test for Calculus 1  (Grade must be above a C)
+
+CALCULUS1_DUAL_GRDE
+Grade/credit from dual credit course for Calculus 1  (Grade must be above a C)
+
+CALCULUS1_CLEP_GRDE
+Grade/credit from CLEP test for Calculus 2 (Grade must be above a C)
+
+CALCULUS2_AP_GRDE
+Grade/credit from AP test for Calculus 2  (Grade must be above a C)
+
+CALCULUS2_DUAL_GRDE
+Grade/credit from dual credit course for Calculus 2 (Grade must be above a C)
+
+CALCULUS2_CLEP_GRDE
+Grade/credit from CLEP test for Calculus 2  (Grade must be above a C)
+Term Code Specific Information (Program of Study, College, Department and Courses)
+CURRENTTERM
+Current Semester
+
+CURRENTTERMCODE
+Current Term Code (YEAR.00 = Spring, YEAR.33=Summer, YEAR.66=Fall)
+
+PROGRAM
+Program as of Current Semester
+
+COLLEGE
+College as of Current Semester
+
+DEPARTMENT
+Department as of Current Semester
+
+SHRTCKN_SUBJ_CODE
+Subject Code
+
+SUBJDESC
+Course Subject
+
+SUBJECT
+Course Subject Description
+
+SHRTCKN_SEQ_NUMB
+Current Term Section Number
+
+SHRTCKN_CRN
+Current Term Section ID
+
+SHRTCKN_CRSE_TITLE
+Current Term Course Title
+
+PRIMARY_INSTRUCTOR_ID
+Current Term Faculty ID
+
+PRIMARY_INSTRUCTOR_RACE-ETH
+Current Term Faculty Race/Ethnicity
+
+SHRTCKG_CREDIT_HOURS
+Current Term Course Credit Hours
+
+MIDTERM_GRADE
+Current Term Course Midterm Grade (nulls indicate withdrawals or that course did not have midterm)
+
+SHRTCKG_GRDE_CODE_FINAL
+Current Term Course Grade
+
+SHRGRDE_QUALITY_POINTS
+Current Term Course Grade Points
+
+SHRGRDE_GPA_IND
+Current Term GPA Indicator (included in GPA  Y, not included = N)
+
+SHRTCKN_REPEAT_COURSE_IND
+Current Term Course Repeat indicator
+
+STVSCHD_DESC
+Current Term Course Type (face to face, internet, etc)
+First Graduation Date
+FIRSTGRADDATE
+First Graduation Date 
+
+FIRSTGRADPROGRAM
+First Graduation Program
+
+FIRSTGRADCOLLEGE
+First Graduation College
+
+FIRSTGRADDEPT
+First Graduation Department
+
 
 The DDL definition is as follows: 
 CREATE TABLE DATA(
