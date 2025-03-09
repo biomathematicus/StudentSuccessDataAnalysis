@@ -90,6 +90,8 @@ The Comprehensive Academic Analysis Pipeline produces one volume for each colleg
 # Student Data Structure
 
 Student data is collected in two data tables as described in this section. The first table, called DATA, contains student, section, and instructor data.  
+
+```bash
 RACE
 Race as of first term
 
@@ -100,13 +102,15 @@ GENDER
 Gender as of first term
 
 FA_APPLIED
-Did the student apply for financial aid their first academic year? (Applied, Did not apply)
+Did the student apply for financial aid their first academic year? 
+(Applied, Did not apply)
 
 AGI
 Adjusted gross income as listed on the financial aid application the first academic year
 
 PELLSTATUS
-Did student receive a pell grant their first academic year? (Pell Paid, No Pell)
+Did student receive a pell grant their first academic year? 
+(Pell Paid, No Pell)
 
 FIRSTGENERATIONSTATUS
 First Generation means that neither of the students parents graduated college
@@ -120,6 +124,7 @@ Entering Status (new or transfer)
 FIRSTTERMCODE
 Entering Term Code (YEAR.00 = Spring, YEAR.33=Summer, YEAR.66=Fall)
 Academic Performance outside college
+
 SAT_COMPOSITE
 SAT Composite - New test (max)
 
@@ -151,7 +156,9 @@ SAT_MATH_CONVERTED
 SAT Math old score converted to new SAT Math score
 
 SAT_WCR_CONVERTED
-SAT Verbal + Writing old score converted to new SAT ERW score (please note that many students did not submit an old writing score; we cannot convert without this score
+SAT Verbal + Writing old score converted to new SAT ERW score 
+(please note that many students did not submit an old writing score; 
+we cannot convert without this score)
 
 ACT_COMPOSITE
 ACT Composite (max)
@@ -205,22 +212,28 @@ HIGHSCHOOLZIP
 High school zip code
 
 COLALGEBRA_AP_GRDE
-Grade/credit from AP test for College Algebra (Grade must be above a C)
+Grade/credit from AP test for College Algebra 
+(Grade must be above a C)
 
 COLALGEBRA_DUAL_GRDE
-Grade/credit from dual credit course for College Algebra (Grade must be above a C)
+Grade/credit from dual credit course for College Algebra 
+(Grade must be above a C)
 
 COLALGEBRA_CLEP_GRDE
-Grade/credit from CLEP test for College Algebra (Grade must be above a C)
+Grade/credit from CLEP test for College Algebra 
+(Grade must be above a C)
 
 PRECALCULUS_AP_GRDE
-Grade/credit from AP test for Precalculus (Grade must be above a C)
+Grade/credit from AP test for Precalculus 
+(Grade must be above a C)
 
 PRECALCULUS_DUAL_GRDE
-Grade/credit from dual credit course for Precalculus (Grade must be above a C)
+Grade/credit from dual credit course for Precalculus 
+(Grade must be above a C)
 
 PRECALCULUS_CLEP_GRDE
-Grade/credit from CLEP test for Precalculus  (Grade must be above a C)
+Grade/credit from CLEP test for Precalculus  
+(Grade must be above a C)
 
 CALCULUS1_AP_GRDE
 Grade/credit from AP test for Calculus 1  (Grade must be above a C)
@@ -240,6 +253,7 @@ Grade/credit from dual credit course for Calculus 2 (Grade must be above a C)
 CALCULUS2_CLEP_GRDE
 Grade/credit from CLEP test for Calculus 2  (Grade must be above a C)
 Term Code Specific Information (Program of Study, College, Department and Courses)
+
 CURRENTTERM
 Current Semester
 
@@ -283,7 +297,8 @@ SHRTCKG_CREDIT_HOURS
 Current Term Course Credit Hours
 
 MIDTERM_GRADE
-Current Term Course Midterm Grade (nulls indicate withdrawals or that course did not have midterm)
+Current Term Course Midterm Grade 
+(nulls indicate withdrawals or that course did not have midterm)
 
 SHRTCKG_GRDE_CODE_FINAL
 Current Term Course Grade
@@ -299,7 +314,7 @@ Current Term Course Repeat indicator
 
 STVSCHD_DESC
 Current Term Course Type (face to face, internet, etc)
-First Graduation Date
+
 FIRSTGRADDATE
 First Graduation Date 
 
@@ -311,6 +326,7 @@ First Graduation College
 
 FIRSTGRADDEPT
 First Graduation Department
+```
 
 **Data Table**
 
