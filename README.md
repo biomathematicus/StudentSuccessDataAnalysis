@@ -1,6 +1,13 @@
 # Student Success Data Analysis Pipeline
 
+## Analysis Pipeline Point of Entry & Database
 The point of entry is /script/aaPipeline.m
+
+A non-normlized relational schema is needed to analyze this data; see data definitions below. The database is a single table with redundancy of information; the design was chosen simply because it made it easy for the Office of Intitutional Research to produce the report. If a normalized relation databse is desired, all stored procedures would have to be updated.
+
+The relational database is accessed in WIndows via OLEDB using the .NET System.Data namespace. Access is designed for local trusted authentication, i.e. login and password are not required int he pipeline. Standard local configuration must be addressed to gurantee authentication. 
+
+A folder called data must be added. Files there are ignored by .gitignore. It is used to store local copies of data files to increase the speed of report generation. 
 
 ## Git protocol
 
@@ -28,8 +35,6 @@ git reset --hard HEAD
 ``` 
 
 ## Description of the data
-
-A folder called data must be added. Files there are ignored by .gitignore. It is used to store local copies of data files to increase the speed of report generation. 
 
 The Comprehensive Academic Analysis Pipeline produces one volume for each college. All data will be anonymized and/or aggregated. Within each volume, there is a chapter for each department. The content of each report is as follows: 
 

@@ -1,6 +1,9 @@
 function connString = funConnString(sType)
-% This function generates a query string to connect to the ModelDB in the 
-% MaHPIC project via OLEDB using the .NET System.Data namespace.  
+% This function generates a query string to connect to the database
+% via OLEDB using the .NET System.Data namespace.  
+% Access is designed for local trusted authentication, i.e. login and
+% password are not required int he pipeline. Standard local configuration
+% must be addressed to gurantee authentication. 
 % Author: Juan B. Gutierrez - juan.gutierrez3@utsa.edu
 % Date: 09/2019
     switch sType
