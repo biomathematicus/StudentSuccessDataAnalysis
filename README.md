@@ -29,6 +29,8 @@ git reset --hard HEAD
 
 ## Description of the data
 
+A folder called data must be added. Files there are ignored by .gitignore. It is used to store local copies of data files to increase the speed of report generation. 
+
 The Comprehensive Academic Analysis Pipeline produces one volume for each college. All data will be anonymized and/or aggregated. Within each volume, there is a chapter for each department. The content of each report is as follows: 
 
 1. Introduction
