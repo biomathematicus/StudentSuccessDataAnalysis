@@ -314,7 +314,9 @@ First Graduation Department
 
 **Data Table**
 
-The DDL definition is as follows: 
+The DDL definition for themain data table is as follows: 
+
+```bash
 CREATE TABLE DATA(
         IDENTIFIER varchar(6) NOT NULL,
         ETHNICITY varchar(41) NULL,
@@ -390,12 +392,16 @@ CREATE TABLE DATA(
         FIRSTGRADCOLLEGE varchar(40) NULL,
         FIRSTGRADDEPT varchar(50) NULL
 )
+```
 
 **Departmental Table**
 
 The departmental table contains information about the cross reference between departments, subjects, and colleges. The DDL definition is: 
+
+```bash
 CREATE TABLE DEPT(
         SUBJECT varchar(4) NOT NULL,
         COLLEGE varchar(50) NOT NULL,
         DEPARTMENT varchar(50) NOT NULL
 )
+```
