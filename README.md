@@ -312,7 +312,8 @@ First Graduation College
 FIRSTGRADDEPT
 First Graduation Department
 
-** Data Table **
+**Data Table**
+
 The DDL definition is as follows: 
 CREATE TABLE DATA(
         IDENTIFIER varchar(6) NOT NULL,
@@ -390,7 +391,7 @@ CREATE TABLE DATA(
         FIRSTGRADDEPT varchar(50) NULL
 )
 
-** Departmental Table **
+**Departmental Table**
 
 The departmental table contains information about the cross reference between departments, subjects, and colleges. The DDL definition is: 
 CREATE TABLE DEPT(
