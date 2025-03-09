@@ -1,7 +1,7 @@
-# Ignore data folder
+# Ignore folders
 data/
-figure/
-
+figur
+s
 # Ignore reports and graphics
 *.jpg
 *.pdf
